@@ -903,6 +903,16 @@ appEl.addEventListener('scroll', () => {
   secs.forEach((id, i) => { const el = document.getElementById(id); if(el && el.getBoundingClientRect().top < innerHeight * 0.6) cur = i; });
   dots.forEach((d, i) => d.classList.toggle('on', i === cur));
 }, {passive: true});
+  async function askAI(prompt){
+  const r = await fetch("/api/ai", {
+    method: "POST",
+    headers: {"Content-Type":"application/json"},
+    body: JSON.stringify({ prompt })
+  });
+
+  const data = await r.json();
+  return data.text || "";
+  }
 </script>
 </body>
 </html>
