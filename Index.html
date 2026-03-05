@@ -1791,62 +1791,49 @@ async function generateAiPhoto() {
   frame.classList.remove('show');
   caption.textContent = '';
   document.getElementById('aiSaveHint').style.display = 'none';
-  
-  // اختيار ستايل عشوائي مختلف عن السابق
+
   currentAiStyle = getNextAiStyle();
-  const styleDesc = AI_STYLES[currentAiStyle];
-  const prompt = `${styleDesc}, beautiful young Arab woman named Haloom with long dark brown wavy hair and warm brown eyes, handsome young Arab man named Mustafa with short curly black hair and gentle smile, romantic couple together, loving atmosphere, high quality digital art, detailed faces, warm romantic lighting, beautiful composition`;
-  const negPrompt = 'ugly, deformed, bad anatomy, blurry, low quality, nsfw, violence, extra limbs, bad hands';
-  
-  const seed = Math.floor(Math.random() * 999999);
-  const encodedPrompt = encodeURIComponent(prompt);
-  const encodedNeg = encodeURIComponent(negPrompt);
-  // Pollinations AI - مجاني وبدون مفاتيح
-  const imgUrl = `https://image.pollinations.ai/prompt/${encodedPrompt}?width=768&height=768&nologo=true&seed=${seed}&negative=${encodedNeg}&model=flux`;
-  
   const caps = AI_CAPTIONS[currentAiStyle];
   const selectedCaption = caps[Math.floor(Math.random() * caps.length)];
-  
-  // timeout: إذا لم تُحمّل الصورة خلال 12 ثانية، نعرض fallback فوراً
+
   let timedOut = false;
   const timeoutId = setTimeout(() => {
     timedOut = true;
-    if(loading.classList.contains('show')) {
-      img.onload = null;
-      img.onerror = null;
-      img.src = '';
+    if(loading.classList.contains('show')) showFallbackImg(currentAiStyle, selectedCaption);
+  }, 40000);
+
+  try {
+    const sceneIndex = Object.keys(AI_STYLES).indexOf(currentAiStyle);
+    const res = await fetch('/api/ai', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ type: 'image', scene: sceneIndex })
+    });
+    const data = await res.json();
+    if (timedOut) return;
+    clearTimeout(timeoutId);
+    if (data.image_url) {
+      img.onload = () => {
+        loading.classList.remove('show');
+        frame.classList.add('show');
+        caption.textContent = selectedCaption;
+        const sparkle = document.createElement('div');
+        sparkle.className = 'ai-result-sparkle';
+        frame.appendChild(sparkle);
+        setTimeout(() => sparkle.remove(), 1000);
+        document.getElementById('aiSaveHint').style.display = 'block';
+        burst(btn);
+        btn.disabled = false;
+      };
+      img.onerror = () => { showFallbackImg(currentAiStyle, selectedCaption); btn.disabled = false; };
+      img.src = data.image_url;
+    } else {
       showFallbackImg(currentAiStyle, selectedCaption);
+      btn.disabled = false;
     }
-  }, 12000);
-  
-  img.src = '';
-  img.onload = () => {
-    if(timedOut) return;
-    clearTimeout(timeoutId);
-    loading.classList.remove('show');
-    frame.classList.add('show');
-    caption.textContent = selectedCaption;
-    const sparkle = document.createElement('div');
-    sparkle.className = 'ai-result-sparkle';
-    frame.appendChild(sparkle);
-    setTimeout(() => sparkle.remove(), 1000);
-    document.getElementById('aiSaveHint').style.display = 'block';
-    burst(btn);
-    btn.disabled = false;
-  };
-  img.onerror = () => {
-    if(timedOut) return;
-    clearTimeout(timeoutId);
-    // محاولة ثانية بـ seed مختلف وحجم أصغر
-    const seed2 = Math.floor(Math.random() * 999999);
-    const imgUrl2 = `https://image.pollinations.ai/prompt/${encodedPrompt}?width=512&height=512&nologo=true&seed=${seed2}&model=flux`;
-    img.onerror = () => {
-      // fallback: صور رومانسية جميلة من Unsplash
-      showFallbackImg(currentAiStyle, selectedCaption);
-    };
-    img.src = imgUrl2;
-  };
-  img.src = imgUrl;
+  } catch(e) {
+    if (!timedOut) { clearTimeout(timeoutId); showFallbackImg(currentAiStyle, selectedCaption); btn.disabled = false; }
+  }
 }
 
 /* ===== BURST EFFECT ===== */
@@ -1943,3 +1930,4 @@ dots.forEach((d, i) => {
 </script>
 </body>
 </html>
+
