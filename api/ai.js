@@ -3,8 +3,9 @@ export default async function handler(req, res) {
     return res.status(405).json({ error: "POST only" });
   }
 
-  const { prompt, maxTokens, type, scene } = req.body || {};
+  const { prompt, maxTokens, type, face_image_url, scene } = req.body || {};
 
+  // === توليد الصور عبر Fal.ai ===
   if (type === "image") {
     const FAL_KEY = process.env.FAL_API_KEY;
     if (!FAL_KEY) return res.status(500).json({ error: "FAL_API_KEY not set" });
@@ -20,36 +21,91 @@ export default async function handler(req, res) {
       "a romantic couple in a cozy cabin in the snow, warm fireplace light, ultra realistic"
     ];
 
-    const idx = scene !== undefined ? scene % scenes.length : Math.floor(Math.random() * scenes.length);
-    const imagePrompt = `${scenes[idx]}, beautiful young Arab woman with long dark hair, handsome young Arab man with short dark curly hair, high quality, 8k`;
+    const selectedScene = scene !== undefined && scenes[scene] ? scenes[scene] : scenes[Math.floor(Math.random() * scenes.length)];
+    const imagePrompt = `${selectedScene}, beautiful faces, high quality, 8k`;
 
     try {
-      const submitRes = await fetch("https://queue.fal.run/fal-ai/flux/schnell", {
-        method: "POST",
-        headers: { "Authorization": `Key ${FAL_KEY}`, "Content-Type": "application/json" },
-        body: JSON.stringify({ prompt: imagePrompt, num_inference_steps: 4, image_size: "landscape_4_3" } )
-      });
-      const submitData = await submitRes.json();
-      const requestId = submitData.request_id;
+      // إذا في صورة وجه، نستخدم IP-Adapter
+      if (face_image_url) {
+        const submitRes = await fetch("https://queue.fal.run/fal-ai/ip-adapter-face-id", {
+          method: "POST",
+          headers: {
+            "Authorization": `Key ${FAL_KEY}`,
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify({
+            prompt: imagePrompt,
+            face_image_url: face_image_url,
+            num_inference_steps: 30,
+            guidance_scale: 7.5
+          })
+        });
+        const submitData = await submitRes.json();
+        const requestId = submitData.request_id;
 
-      let result = null;
-      for (let i = 0; i < 20; i++) {
-        await new Promise(r => setTimeout(r, 1500));
-        const statusRes = await fetch(`https://queue.fal.run/fal-ai/flux/schnell/requests/${requestId}`, {
-          headers: { "Authorization": `Key ${FAL_KEY}` }
-        } );
-        const statusData = await statusRes.json();
-        if (statusData.status === "COMPLETED") { result = statusData; break; }
+        // انتظر النتيجة
+        let result = null;
+        for (let i = 0; i < 30; i++) {
+          await new Promise(r => setTimeout(r, 2000));
+          const statusRes = await fetch(`https://queue.fal.run/fal-ai/ip-adapter-face-id/requests/${requestId}`, {
+            headers: { "Authorization": `Key ${FAL_KEY}` }
+          });
+          const statusData = await statusRes.json();
+          if (statusData.status === "COMPLETED") {
+            result = statusData;
+            break;
+          }
+        }
+
+        if (result?.images?.[0]?.url) {
+          return res.status(200).json({ image_url: result.images[0].url });
+        }
+        return res.status(500).json({ error: "image generation timeout" });
+
+      } else {
+        // بدون صورة وجه - نستخدم flux-schnell
+        const submitRes = await fetch("https://queue.fal.run/fal-ai/flux/schnell", {
+          method: "POST",
+          headers: {
+            "Authorization": `Key ${FAL_KEY}`,
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify({
+            prompt: imagePrompt,
+            num_inference_steps: 4,
+            image_size: "landscape_4_3"
+          })
+        });
+        const submitData = await submitRes.json();
+        const requestId = submitData.request_id;
+
+        let result = null;
+        for (let i = 0; i < 20; i++) {
+          await new Promise(r => setTimeout(r, 1500));
+          const statusRes = await fetch(`https://queue.fal.run/fal-ai/flux/schnell/requests/${requestId}`, {
+            headers: { "Authorization": `Key ${FAL_KEY}` }
+          });
+          const statusData = await statusRes.json();
+          if (statusData.status === "COMPLETED") {
+            result = statusData;
+            break;
+          }
+        }
+
+        if (result?.images?.[0]?.url) {
+          return res.status(200).json({ image_url: result.images[0].url });
+        }
+        return res.status(500).json({ error: "image generation timeout" });
       }
-
-      if (result?.images?.[0]?.url) return res.status(200).json({ image_url: result.images[0].url });
-      return res.status(500).json({ error: "timeout" });
     } catch (e) {
-      return res.status(500).json({ error: "fal error" });
+      return res.status(500).json({ error: "fal error: " + e.message });
     }
   }
 
-  if (!prompt) return res.status(400).json({ error: "prompt required" });
+  // === توليد النصوص عبر Gemini ===
+  if (!prompt) {
+    return res.status(400).json({ error: "prompt required" });
+  }
 
   const GEMINI_KEY = process.env.GEMINI_API_KEY;
   if (!GEMINI_KEY) return res.status(500).json({ error: "GEMINI_API_KEY not set" });
@@ -62,8 +118,11 @@ export default async function handler(req, res) {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           contents: [{ parts: [{ text: prompt }] }],
-          generationConfig: { maxOutputTokens: maxTokens || 300, temperature: 0.85 }
-        } )
+          generationConfig: {
+            maxOutputTokens: maxTokens || 300,
+            temperature: 0.85
+          }
+        })
       }
     );
     const data = await r.json();
