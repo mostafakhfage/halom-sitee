@@ -1,0 +1,1956 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+<title>كون حلوم ✨</title>
+<link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Tajawal:wght@300;400;500;700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+:root{--void:#00000f;--gold:#f5c842;--rose:#ff5c8a;--violet:#b06aff;--blue:#38d9f5;--green:#4fffc1;--cream:#fff5e8}
+html,body{width:100%;height:100%;overflow:hidden;background:var(--void);font-family:'Tajawal',sans-serif;color:var(--cream)}
+#bg{position:fixed;inset:0;z-index:0;pointer-events:none}
+.screen{position:fixed;inset:0;z-index:10;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:2rem;opacity:0;pointer-events:none;transition:opacity 1s ease}
+.screen.active{opacity:1;pointer-events:all}
+
+/* INTRO */
+#intro{text-align:center}
+.portal{width:200px;height:200px;border-radius:50%;position:relative;margin:0 auto 2rem;cursor:pointer;background:radial-gradient(circle at 38% 35%,#ffb8d0,#e03a6a 30%,#7a0a38 60%,#1a0010);box-shadow:0 0 80px #ff5c8a44,0 0 160px #ff5c8a22,inset -30px -30px 60px rgba(0,0,0,0.7);animation:floatAnim 5s ease-in-out infinite;display:flex;align-items:center;justify-content:center;font-size:4rem;filter:drop-shadow(0 0 15px #ff5c8a)}
+.portal::before{content:'';position:absolute;inset:-15px;border-radius:50%;border:1px solid rgba(255,92,138,0.25);animation:spin 10s linear infinite}
+.portal::after{content:'';position:absolute;inset:-30px;border-radius:50%;border:1px solid rgba(176,106,255,0.12);animation:spin 18s linear infinite reverse}
+@keyframes floatAnim{0%,100%{transform:translateY(0)}50%{transform:translateY(-16px)}}
+@keyframes spin{to{transform:rotate(360deg)}}
+.intro-name{font-family:'Amiri',serif;font-size:clamp(3rem,10vw,5.5rem);background:linear-gradient(135deg,#f5c842,#ff5c8a,#b06aff);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;animation:nameGlow 4s ease-in-out infinite}
+@keyframes nameGlow{0%,100%{filter:drop-shadow(0 0 20px #f5c84244)}50%{filter:drop-shadow(0 0 50px #ff5c8a66)}}
+.magic-btn{margin-top:2rem;background:none;border:1px solid rgba(255,92,138,0.3);color:var(--rose);font-family:'Tajawal',sans-serif;font-size:1rem;padding:0.9rem 2.5rem;border-radius:50px;cursor:pointer;letter-spacing:0.15em;transition:all 0.4s}
+.magic-btn:hover{border-color:var(--rose);box-shadow:0 0 30px #ff5c8a33;transform:scale(1.04)}
+
+/* APP */
+#app{padding:0;align-items:stretch;justify-content:flex-start;overflow-y:auto;-webkit-overflow-scrolling:touch}
+#app::-webkit-scrollbar{width:3px}
+#app::-webkit-scrollbar-thumb{background:#ff5c8a22}
+.app-inner{max-width:480px;margin:0 auto;padding:1.5rem 1.2rem 7rem;width:100%}
+.sec{margin-bottom:0.5rem}
+.sec-head{display:flex;align-items:center;gap:0.6rem;margin-bottom:1.2rem}
+.sec-ic{font-size:1.4rem}
+.sec-tit{font-family:'Amiri',serif;font-size:1.3rem;color:var(--cream)}
+.sec-ln{flex:1;height:1px;background:linear-gradient(90deg,rgba(255,255,255,0.1),transparent)}
+.divider{width:100%;height:1px;background:linear-gradient(90deg,transparent,rgba(255,255,255,0.06),transparent);margin:2rem 0}
+
+/* HERO */
+.hero{text-align:center;padding-top:1rem}
+.planet-wrap{position:relative;width:160px;height:160px;margin:0 auto 1.5rem}
+.main-planet{width:160px;height:160px;border-radius:50%;background:radial-gradient(circle at 38% 33%,#ffd0e8,#ff5c8a 25%,#8a0035 55%,#1a0010);box-shadow:0 0 60px #ff5c8a44,0 0 120px #ff5c8a22,inset -25px -25px 50px rgba(0,0,0,0.6);display:flex;align-items:center;justify-content:center;font-size:3.5rem;cursor:pointer;transition:transform 0.3s,box-shadow 0.3s;position:relative;z-index:2;animation:planetPulse 3s ease-in-out infinite}
+@keyframes planetPulse{0%,100%{box-shadow:0 0 60px #ff5c8a44,0 0 120px #ff5c8a22,inset -25px -25px 50px rgba(0,0,0,0.6)}50%{box-shadow:0 0 100px #ff5c8a88,0 0 200px #ff5c8a44,inset -25px -25px 50px rgba(0,0,0,0.6)}}
+.main-planet:active{transform:scale(1.15)!important}
+.orb{position:absolute;border-radius:50%;border:1px solid;animation:spin linear infinite}
+.orb1{inset:-20px;border-color:rgba(255,92,138,0.2);animation-duration:12s}
+.orb2{inset:-38px;border-color:rgba(176,106,255,0.12);animation-duration:20s;animation-direction:reverse}
+.orb-moon{position:absolute;width:18px;height:18px;border-radius:50%;background:radial-gradient(circle at 35% 35%,#fff8d0,#e0c060);box-shadow:0 0 10px #f5c84266;top:10px;right:-10px;z-index:3;animation:moonOrbit 6s linear infinite}
+@keyframes moonOrbit{0%{transform:rotate(0deg) translateX(85px) rotate(0deg)}100%{transform:rotate(360deg) translateX(85px) rotate(-360deg)}}
+.planet-name{font-family:'Amiri',serif;font-size:2rem;color:var(--cream);margin-bottom:0.3rem}
+.planet-since{font-size:0.72rem;letter-spacing:0.3em;color:#605080;text-transform:uppercase;margin-bottom:1.2rem}
+.cnt-row{display:flex;gap:0.6rem;justify-content:center}
+.cnt-b{background:rgba(255,255,255,0.04);border:1px solid rgba(255,92,138,0.12);border-radius:14px;padding:0.7rem 1rem;min-width:60px;text-align:center}
+.cnt-n{font-family:'Amiri',serif;font-size:1.6rem;color:var(--rose);display:block;line-height:1}
+.cnt-l{font-size:0.62rem;color:#605080;margin-top:0.2rem;letter-spacing:0.1em}
+
+/* TIME MSG */
+.tmsg{border-radius:18px;padding:1.3rem;text-align:center;border:1px solid rgba(255,255,255,0.07);background:rgba(255,255,255,0.03)}
+.t-e{font-size:2.5rem;display:block;margin-bottom:0.5rem}
+.t-g{font-family:'Amiri',serif;font-size:1.2rem;margin-bottom:0.5rem}
+.t-g.morning{color:var(--gold)}
+.t-g.evening{color:var(--violet)}
+.t-g.night{color:var(--blue)}
+.t-p{font-size:0.88rem;line-height:1.8;color:#a090b8}
+
+/* STARS */
+.stars-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:0.6rem}
+.sbtn{background:rgba(255,255,255,0.03);border:1px solid rgba(176,106,255,0.12);border-radius:12px;padding:0.7rem 0.3rem;text-align:center;cursor:pointer;transition:all 0.3s}
+.sbtn:hover,.sbtn.lit{background:rgba(176,106,255,0.1);border-color:rgba(176,106,255,0.35);transform:translateY(-2px);box-shadow:0 0 18px rgba(176,106,255,0.18)}
+.se{font-size:1.5rem;display:block}
+.sy{font-size:0.68rem;color:#6050a0;margin-top:0.25rem}
+.spop{display:none;grid-column:1/-1;background:rgba(176,106,255,0.07);border:1px solid rgba(176,106,255,0.2);border-radius:12px;padding:0.9rem 1.1rem;font-size:0.88rem;line-height:1.8;color:#c8b8f0;animation:popIn 0.3s ease}
+.spop.show{display:block}
+
+/* GARDEN - MOOD */
+.mood-tabs{display:flex;gap:0.5rem;margin-bottom:1rem;flex-wrap:wrap}
+.mood-tab{background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.08);border-radius:50px;padding:0.4rem 1rem;font-size:0.78rem;cursor:pointer;transition:all 0.3s;color:#a090b8}
+.mood-tab.on{border-color:var(--rose);color:var(--rose);background:rgba(255,92,138,0.08)}
+.garden-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:0.7rem}
+.fbtn{background:rgba(255,255,255,0.03);border:1px solid rgba(79,255,193,0.08);border-radius:14px;padding:0.9rem 0.4rem;text-align:center;cursor:pointer;transition:all 0.3s}
+.fbtn:hover{background:rgba(79,255,193,0.07);border-color:rgba(79,255,193,0.3);transform:translateY(-3px);box-shadow:0 0 18px rgba(79,255,193,0.12)}
+.fe{font-size:1.9rem;display:block;margin-bottom:0.35rem}
+.fn{font-size:0.72rem;color:#50a080}
+.mem-ov{position:fixed;inset:0;z-index:100;background:rgba(0,0,0,0.88);display:none;align-items:center;justify-content:center;padding:2rem;backdrop-filter:blur(12px)}
+.mem-ov.show{display:flex}
+.mem-c{background:linear-gradient(135deg,#040d08,#081408);border:1px solid rgba(79,255,193,0.22);border-radius:22px;padding:2.5rem 1.8rem;max-width:360px;width:100%;text-align:center;animation:popIn 0.4s ease}
+.m-e{font-size:3.5rem;margin-bottom:0.8rem;display:block}
+.m-t{font-family:'Amiri',serif;font-size:1.25rem;color:var(--green);margin-bottom:0.7rem}
+.m-p{font-size:0.9rem;line-height:1.9;color:#a0c8b0}
+.m-ai{font-size:0.8rem;line-height:1.8;color:#80b898;margin-top:0.7rem;padding-top:0.7rem;border-top:1px solid rgba(79,255,193,0.1);display:none}
+.m-ai.show{display:block}
+.m-cls{margin-top:1.4rem;background:rgba(79,255,193,0.08);border:1px solid rgba(79,255,193,0.25);color:var(--green);font-family:'Tajawal',sans-serif;font-size:0.88rem;padding:0.55rem 1.8rem;border-radius:50px;cursor:pointer;transition:all 0.3s}
+.m-cls:hover{background:rgba(79,255,193,0.16)}
+
+/* WHO AM I BOX */
+.who-box{background:linear-gradient(135deg,rgba(176,106,255,0.08),rgba(56,217,245,0.05));border:1px solid rgba(176,106,255,0.2);border-radius:20px;padding:1.5rem;text-align:center}
+.who-title{font-family:'Amiri',serif;font-size:1.1rem;color:var(--violet);margin-bottom:0.5rem}
+.who-sub{font-size:0.78rem;color:#605080;margin-bottom:1.2rem}
+.who-btn{background:linear-gradient(135deg,rgba(176,106,255,0.15),rgba(56,217,245,0.1));border:1px solid rgba(176,106,255,0.3);color:var(--violet);font-family:'Amiri',serif;font-size:1rem;padding:0.8rem 2rem;border-radius:50px;cursor:pointer;transition:all 0.3s;display:block;width:100%;margin-bottom:0.8rem}
+.who-btn:hover{transform:scale(1.03);box-shadow:0 0 25px rgba(176,106,255,0.3)}
+.who-res{display:none;font-family:'Amiri',serif;font-size:1rem;line-height:2;color:#d0c0f8;background:rgba(176,106,255,0.07);border:1px solid rgba(176,106,255,0.15);border-radius:14px;padding:1.2rem;animation:popIn 0.5s ease;text-align:right}
+.who-res.show{display:block}
+
+/* HUG BOX */
+.hug-box{background:linear-gradient(135deg,rgba(255,92,138,0.07),rgba(176,106,255,0.05));border:1px solid rgba(255,92,138,0.15);border-radius:20px;padding:1.5rem;text-align:center}
+.hug-title{font-family:'Amiri',serif;font-size:1.1rem;color:var(--rose);margin-bottom:1.2rem}
+.hug-btns{display:flex;gap:1rem;justify-content:center}
+.hug-person{display:flex;flex-direction:column;align-items:center;gap:0.5rem;cursor:pointer;transition:all 0.3s;background:none;border:none;color:var(--cream);font-family:'Tajawal',sans-serif}
+.hug-avatar{width:80px;height:80px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:2.5rem;border:2px solid;transition:all 0.4s;position:relative;overflow:hidden}
+.hug-avatar::after{content:'';position:absolute;inset:0;border-radius:50%;opacity:0;transition:opacity 0.4s}
+.hug-avatar:hover::after,.hug-avatar.active::after{opacity:1}
+.hug-halima .hug-avatar{border-color:rgba(255,92,138,0.4);background:radial-gradient(circle,rgba(255,92,138,0.15),rgba(255,92,138,0.05))}
+.hug-halima .hug-avatar::after{background:radial-gradient(circle,rgba(255,92,138,0.3),transparent)}
+.hug-mustafa .hug-avatar{border-color:rgba(56,217,245,0.4);background:radial-gradient(circle,rgba(56,217,245,0.15),rgba(56,217,245,0.05))}
+.hug-mustafa .hug-avatar::after{background:radial-gradient(circle,rgba(56,217,245,0.3),transparent)}
+.hug-name{font-size:0.82rem;color:#a090b8}
+.hug-res{display:none;margin-top:1.2rem;font-family:'Amiri',serif;font-size:1.05rem;line-height:1.9;color:#d0c0f8;animation:popIn 0.5s ease;padding:1rem;background:rgba(176,106,255,0.07);border-radius:14px;border:1px solid rgba(176,106,255,0.15)}
+.hug-res.show{display:block}
+
+/* MOON */
+.moon-w{text-align:center}
+.moon-o{width:120px;height:120px;border-radius:50%;margin:0 auto 0.8rem;cursor:pointer;background:radial-gradient(circle at 30% 30%,#fff8d0,#f0c060 50%,#c08020);box-shadow:0 0 40px #f5c84244,0 0 80px #f5c84222;animation:moonFloat 7s ease-in-out infinite;display:flex;align-items:center;justify-content:center;font-size:2.3rem;transition:transform 0.3s}
+.moon-o:hover{transform:scale(1.08)}
+@keyframes moonFloat{0%,100%{transform:translateY(0) rotate(-5deg)}50%{transform:translateY(-10px) rotate(5deg)}}
+.moon-hint{font-size:0.72rem;color:#605080;letter-spacing:0.2em;margin-bottom:0.9rem}
+.pr-list{display:none;animation:popIn 0.4s ease}
+.pr-list.show{display:block}
+.pr-row{display:flex;align-items:center;gap:0.7rem;background:rgba(245,200,66,0.04);border:1px solid rgba(245,200,66,0.1);border-radius:11px;padding:0.75rem 0.9rem;margin-bottom:0.6rem;font-size:0.88rem;color:#d8c890;line-height:1.6}
+.pr-ic{font-size:1.1rem;flex-shrink:0}
+
+/* JOURNEY */
+.journey{position:relative;padding-right:1.8rem}
+.journey::before{content:'';position:absolute;top:0;bottom:0;right:0.45rem;width:2px;background:linear-gradient(180deg,var(--rose),var(--violet),var(--blue));border-radius:2px}
+.j-item{display:flex;flex-direction:row-reverse;gap:0.8rem;margin-bottom:1rem;align-items:flex-start}
+.j-dot{width:11px;height:11px;border-radius:50%;background:var(--rose);box-shadow:0 0 8px var(--rose);flex-shrink:0;margin-top:0.35rem;position:relative;right:-1.48rem}
+.j-box{flex:1;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.06);border-radius:10px;padding:0.6rem 0.8rem}
+.j-yr{font-size:0.68rem;color:var(--rose);margin-bottom:0.15rem}
+.j-tx{font-size:0.83rem;color:#b0a8c8;line-height:1.6}
+
+/* WISH */
+.wish-w{text-align:center}
+.wish-orb{width:130px;height:130px;border-radius:50%;margin:0 auto 0.8rem;cursor:pointer;border:none;background:radial-gradient(circle at 35% 35%,#c8a0ff,#6030c0 50%,#180840);box-shadow:0 0 50px #b06aff44,0 0 100px #b06aff22;animation:floatAnim 4s ease-in-out infinite;display:flex;align-items:center;justify-content:center;font-size:2.8rem;transition:transform 0.3s;position:relative;overflow:hidden}
+.wish-orb:hover{transform:scale(1.08)}
+.wish-orb::after{content:'';position:absolute;top:-50%;left:-50%;width:200%;height:200%;background:conic-gradient(transparent 0deg,rgba(176,106,255,0.25) 60deg,transparent 120deg);animation:spin 3s linear infinite}
+.wish-hint{font-size:0.72rem;color:#605080;letter-spacing:0.2em;margin-bottom:0.9rem}
+.wish-res{display:none;font-family:'Amiri',serif;font-size:1.05rem;line-height:1.9;color:#c8b8f0;background:rgba(176,106,255,0.07);border:1px solid rgba(176,106,255,0.18);border-radius:14px;padding:1.1rem;animation:popIn 0.5s ease}
+.wish-res.show{display:block}
+
+/* DICT */
+.dict-in-wrap{position:relative;margin-bottom:0.9rem}
+.dict-in{width:100%;background:rgba(255,92,138,0.05);border:1px solid rgba(255,92,138,0.18);border-radius:50px;padding:0.9rem 1.3rem 0.9rem 5.5rem;color:var(--cream);font-family:'Tajawal',sans-serif;font-size:1rem;outline:none;transition:all 0.4s;text-align:right}
+.dict-in:focus{border-color:rgba(255,92,138,0.55);background:rgba(255,92,138,0.09);box-shadow:0 0 25px rgba(255,92,138,0.12)}
+.dict-in::placeholder{color:#604080}
+.dict-btn{position:absolute;left:6px;top:50%;transform:translateY(-50%);background:linear-gradient(135deg,#ff5c8a,#b06aff);border:none;border-radius:50px;padding:0.6rem 1rem;color:white;font-size:0.85rem;cursor:pointer;transition:all 0.3s;white-space:nowrap;font-family:'Tajawal',sans-serif}
+.dict-btn:hover{transform:translateY(-50%) scale(1.05);box-shadow:0 4px 15px rgba(255,92,138,0.35)}
+.dict-res{display:none;border-radius:20px;padding:1.5rem 1.2rem;text-align:center;background:linear-gradient(135deg,rgba(255,92,138,0.07),rgba(176,106,255,0.05));border:1px solid rgba(255,92,138,0.15);animation:popIn 0.5s ease}
+.dict-res.show{display:block}
+.d-orig{font-size:0.7rem;color:#705080;letter-spacing:0.25em;margin-bottom:0.8rem;background:rgba(255,255,255,0.04);display:inline-block;padding:0.25rem 0.9rem;border-radius:50px}
+.d-trans{font-family:'Amiri',serif;font-size:1.6rem;color:var(--rose);margin-bottom:0.5rem;line-height:1.4}
+.d-mean{font-size:0.84rem;color:#b898b0;line-height:1.8;margin-top:0.5rem;padding-top:0.5rem;border-top:1px solid rgba(255,255,255,0.06)}
+
+/* OATH BOX */
+.oath-box{border-radius:20px;overflow:hidden;cursor:pointer;transition:all 0.3s}
+.oath-box:hover{transform:translateY(-2px)}
+.oath-card{padding:1.5rem;text-align:center;position:relative;overflow:hidden}
+.oath-card::before{content:'';position:absolute;inset:0;opacity:0.06}
+.oath-gold{background:linear-gradient(135deg,rgba(245,200,66,0.1),rgba(245,200,66,0.04));border:1px solid rgba(245,200,66,0.25)}
+.oath-gold .oath-card::before{background:radial-gradient(circle at top right,#f5c842,transparent)}
+.oath-violet{background:linear-gradient(135deg,rgba(176,106,255,0.1),rgba(176,106,255,0.04));border:1px solid rgba(176,106,255,0.25);margin-top:1rem}
+.oath-violet .oath-card::before{background:radial-gradient(circle at top right,#b06aff,transparent)}
+.oath-icon{font-size:2.5rem;margin-bottom:0.8rem;display:block}
+.oath-title{font-family:'Amiri',serif;font-size:1.3rem;margin-bottom:0.5rem}
+.oath-gold .oath-title{color:var(--gold)}
+.oath-violet .oath-title{color:var(--violet)}
+.oath-hint{font-size:0.75rem;color:#605080;letter-spacing:0.2em}
+.oath-content{display:none;padding:1.5rem;background:rgba(0,0,0,0.3);border-top:1px solid rgba(255,255,255,0.06)}
+.oath-content.show{display:block;animation:popIn 0.5s ease}
+.oath-text{font-family:'Amiri',serif;font-size:0.92rem;line-height:2.2;color:#c8b8e0;text-align:right;white-space:pre-line}
+
+/* NAV DOTS */
+.nav-dots{position:fixed;bottom:1.2rem;left:50%;transform:translateX(-50%);z-index:50;display:flex;gap:0.5rem;background:rgba(0,0,5,0.7);backdrop-filter:blur(12px);border:1px solid rgba(255,255,255,0.06);border-radius:50px;padding:0.5rem 0.8rem}
+.ndot{width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,0.15);border:none;cursor:pointer;transition:all 0.3s;padding:0}
+.ndot.on{background:var(--rose);box-shadow:0 0 8px var(--rose);width:20px;border-radius:4px}
+
+@keyframes popIn{from{opacity:0;transform:translateY(-8px)}to{opacity:1;transform:translateY(0)}}
+
+/* PING BUTTONS */
+.ping-box{background:linear-gradient(135deg,rgba(255,92,138,0.07),rgba(176,106,255,0.05));border:1px solid rgba(255,92,138,0.15);border-radius:20px;padding:1.5rem;text-align:center}
+.ping-title{font-family:'Amiri',serif;font-size:1.1rem;color:var(--rose);margin-bottom:1.2rem}
+.ping-btns{display:flex;gap:0.6rem;justify-content:center;flex-wrap:wrap;margin-bottom:1rem}
+.ping-btn{display:flex;flex-direction:column;align-items:center;gap:0.5rem;background:rgba(255,255,255,0.04);border:1px solid rgba(255,92,138,0.2);border-radius:16px;padding:0.9rem 1.2rem;cursor:pointer;transition:all 0.3s;color:var(--cream);font-family:'Tajawal',sans-serif;font-size:0.85rem}
+.ping-btn.want-color{border-color:rgba(255,120,50,0.5)}
+.ping-btn:hover{transform:translateY(-3px);box-shadow:0 0 20px rgba(255,92,138,0.25)}
+.ping-btn.hug-color{border-color:rgba(255,92,138,0.4)}
+.ping-btn.miss-color{border-color:rgba(176,106,255,0.4)}
+.ping-btn.heart-color{border-color:rgba(255,50,100,0.5)}
+.ping-btn .ping-icon{font-size:2rem}
+.ping-status{margin-top:1rem;font-size:0.85rem;color:#a090b8;min-height:1.2rem}
+
+/* INCOMING PING OVERLAY */
+.ping-incoming{position:fixed;top:0;left:0;right:0;bottom:0;z-index:9998;display:none;align-items:center;justify-content:center;background:rgba(0,0,0,0.75);backdrop-filter:blur(16px)}
+.ping-incoming.show{display:flex;animation:popIn 0.4s ease}
+.ping-card{background:linear-gradient(135deg,#0d0010,#100020);border:1px solid rgba(255,92,138,0.35);border-radius:28px;padding:2.5rem 2rem;text-align:center;max-width:320px;width:90%;box-shadow:0 0 60px rgba(255,92,138,0.2)}
+.ping-card-icon{font-size:4.5rem;display:block;margin-bottom:1rem;animation:floatAnim 2s ease-in-out infinite}
+.ping-card-title{font-family:'Amiri',serif;font-size:1.6rem;color:var(--rose);margin-bottom:0.5rem}
+.ping-card-msg{font-size:0.95rem;color:#c8b0e8;line-height:1.8;margin-bottom:1.5rem}
+.ping-card-close{background:linear-gradient(135deg,#ff5c8a,#b06aff);border:none;padding:0.7rem 2rem;border-radius:50px;color:white;cursor:pointer;font-family:'Tajawal',sans-serif;font-size:1rem}
+@keyframes shake{0%,100%{transform:translateX(0)}10%,30%,50%,70%,90%{transform:translateX(-8px)}20%,40%,60%,80%{transform:translateX(8px)}}
+.hpop{position:fixed;pointer-events:none;z-index:200;font-size:1.3rem;animation:hFly 1.8s ease-out forwards}
+@keyframes hFly{0%{opacity:1;transform:translateY(0) scale(1)}100%{opacity:0;transform:translateY(-130px) scale(0.3)}}
+
+/* رسالة منتصف الليل */
+.midnight-overlay{position:fixed;inset:0;z-index:9997;display:none;align-items:center;justify-content:center;background:rgba(0,0,0,0.9);backdrop-filter:blur(20px)}
+.midnight-overlay.show{display:flex;animation:popIn 0.6s ease}
+.midnight-card{background:linear-gradient(135deg,#050010,#0a0020);border:1px solid rgba(176,106,255,0.3);border-radius:28px;padding:2.5rem 2rem;text-align:center;max-width:340px;width:90%;box-shadow:0 0 80px rgba(176,106,255,0.2)}
+.midnight-stars{font-size:2rem;margin-bottom:1rem;letter-spacing:0.5rem}
+.midnight-title{font-family:'Amiri',serif;font-size:1.4rem;color:var(--violet);margin-bottom:0.5rem}
+.midnight-time{font-size:0.65rem;color:#504070;letter-spacing:0.3em;margin-bottom:1.2rem}
+.midnight-msg{font-family:'Amiri',serif;font-size:0.95rem;line-height:2;color:#c8b8f0;margin-bottom:1.5rem;text-align:right}
+.midnight-close{background:linear-gradient(135deg,rgba(176,106,255,0.2),rgba(56,217,245,0.1));border:1px solid rgba(176,106,255,0.3);color:var(--violet);font-family:'Tajawal',sans-serif;font-size:0.9rem;padding:0.7rem 2rem;border-radius:50px;cursor:pointer}
+
+/* عداد بحبك */
+.love-counter-box{background:linear-gradient(135deg,rgba(255,92,138,0.1),rgba(176,106,255,0.07));border:1px solid rgba(255,92,138,0.25);border-radius:24px;padding:1.8rem;text-align:center}
+.love-counter-title{font-family:'Amiri',serif;font-size:1.1rem;color:var(--rose);margin-bottom:1.2rem}
+.love-counter-num{font-family:'Amiri',serif;font-size:3.5rem;color:var(--rose);display:block;line-height:1;margin-bottom:0.3rem;text-shadow:0 0 30px rgba(255,92,138,0.5)}
+.love-counter-label{font-size:0.7rem;color:#605080;letter-spacing:0.3em;margin-bottom:1.4rem}
+.love-counter-btn{background:linear-gradient(135deg,#ff5c8a,#b06aff);border:none;border-radius:50px;padding:0.9rem 2.5rem;color:white;font-family:'Amiri',serif;font-size:1.1rem;cursor:pointer;transition:all 0.3s;box-shadow:0 0 25px rgba(255,92,138,0.3)}
+.love-counter-btn:hover{transform:scale(1.06);box-shadow:0 0 40px rgba(255,92,138,0.5)}
+.love-counter-btn:active{transform:scale(0.97)}
+@keyframes heartPop{0%{transform:scale(1)}50%{transform:scale(1.25)}100%{transform:scale(1)}}
+.love-counter-btn.pop{animation:heartPop 0.3s ease}
+
+/* حديقة الورود */
+.rose-garden-box{background:linear-gradient(135deg,rgba(255,92,138,0.06),rgba(79,255,193,0.04));border:1px solid rgba(255,92,138,0.18);border-radius:24px;padding:1.5rem;text-align:center}
+.rose-garden-title{font-family:'Amiri',serif;font-size:1.1rem;color:var(--rose);margin-bottom:0.5rem}
+.rose-garden-sub{font-size:0.75rem;color:#605080;margin-bottom:1.2rem;letter-spacing:0.1em}
+.rose-garden-field{min-height:90px;display:flex;flex-wrap:wrap;gap:4px;justify-content:center;align-items:center;margin-bottom:1.2rem;padding:0.5rem;border-radius:14px;background:rgba(0,0,0,0.2);border:1px solid rgba(255,92,138,0.08)}
+.rose-garden-field .rose-item{font-size:1.5rem;animation:roseBloom 0.4s ease;display:inline-block}
+@keyframes roseBloom{0%{transform:scale(0) rotate(-30deg);opacity:0}60%{transform:scale(1.3) rotate(5deg)}100%{transform:scale(1) rotate(0deg);opacity:1}}
+.rose-garden-btn{background:linear-gradient(135deg,rgba(255,92,138,0.15),rgba(176,106,255,0.1));border:1px solid rgba(255,92,138,0.3);color:var(--rose);font-family:'Tajawal',sans-serif;font-size:0.95rem;padding:0.75rem 2rem;border-radius:50px;cursor:pointer;transition:all 0.3s}
+.rose-garden-btn:hover{background:linear-gradient(135deg,rgba(255,92,138,0.25),rgba(176,106,255,0.18));transform:scale(1.04)}
+.rose-garden-count{font-size:0.72rem;color:#605080;margin-top:0.7rem}
+
+/* كرة التنبؤ */
+.oracle-box{background:linear-gradient(135deg,rgba(176,106,255,0.08),rgba(56,217,245,0.05));border:1px solid rgba(176,106,255,0.2);border-radius:24px;padding:1.5rem;text-align:center}
+.oracle-ball{width:130px;height:130px;border-radius:50%;margin:0 auto 0.8rem;cursor:pointer;background:radial-gradient(circle at 35% 30%,#e0c8ff,#7030d0 45%,#1a0840);box-shadow:0 0 50px rgba(176,106,255,0.4),0 0 100px rgba(176,106,255,0.2),inset -20px -20px 40px rgba(0,0,0,0.5);display:flex;align-items:center;justify-content:center;font-size:2.8rem;position:relative;overflow:hidden;transition:transform 0.3s;animation:floatAnim 5s ease-in-out infinite}
+.oracle-ball:hover{transform:scale(1.08)}
+.oracle-ball::before{content:'';position:absolute;inset:0;border-radius:50%;background:conic-gradient(transparent 0deg,rgba(176,106,255,0.2) 60deg,transparent 120deg);animation:spin 4s linear infinite}
+.oracle-hint{font-size:0.72rem;color:#605080;letter-spacing:0.2em;margin-bottom:0.9rem}
+.oracle-res{display:none;font-family:'Amiri',serif;font-size:1.05rem;line-height:1.9;color:#c8b8f0;background:rgba(176,106,255,0.08);border:1px solid rgba(176,106,255,0.2);border-radius:14px;padding:1.1rem;animation:popIn 0.5s ease;margin-top:0.5rem}
+.oracle-res.show{display:block}
+.oracle-loading{color:#7050a0;font-size:0.85rem;margin-top:0.5rem;display:none}
+.oracle-loading.show{display:block}
+
+/* رسائل اليوم المشتركة */
+.daily-msg-box{background:linear-gradient(135deg,rgba(56,217,245,0.07),rgba(176,106,255,0.05));border:1px solid rgba(56,217,245,0.2);border-radius:24px;padding:1.5rem}
+.daily-msg-title{font-family:'Amiri',serif;font-size:1.1rem;color:var(--blue);margin-bottom:0.3rem;text-align:center}
+.daily-msg-sub{font-size:0.75rem;color:#605080;text-align:center;margin-bottom:1.2rem}
+.daily-msg-tabs{display:flex;gap:0.5rem;margin-bottom:1rem}
+.daily-msg-tab{flex:1;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.08);border-radius:50px;padding:0.5rem;font-size:0.82rem;cursor:pointer;transition:all 0.3s;color:#a090b8;text-align:center;font-family:'Tajawal',sans-serif}
+.daily-msg-tab.on{border-color:var(--blue);color:var(--blue);background:rgba(56,217,245,0.08)}
+.daily-msg-write{display:none}
+.daily-msg-write.show{display:block}
+.daily-who-btns{display:flex;gap:0.5rem;margin-bottom:0.7rem}
+.daily-who-btn{flex:1;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.08);border-radius:50px;padding:0.55rem;font-size:0.85rem;cursor:pointer;transition:all 0.3s;color:#a090b8;text-align:center;font-family:'Tajawal',sans-serif}
+.daily-who-btn.on{border-color:var(--rose);color:var(--rose);background:rgba(255,92,138,0.1)}
+.daily-who-btn.on-blue{border-color:var(--blue);color:var(--blue);background:rgba(56,217,245,0.1)}
+.daily-msg-textarea{width:100%;background:rgba(56,217,245,0.05);border:1px solid rgba(56,217,245,0.2);border-radius:14px;padding:0.9rem 1rem;color:var(--cream);font-family:'Tajawal',sans-serif;font-size:0.9rem;resize:none;outline:none;min-height:90px;direction:rtl;transition:all 0.3s}
+.daily-msg-textarea:focus{border-color:rgba(56,217,245,0.5);background:rgba(56,217,245,0.08)}
+.daily-msg-textarea::placeholder{color:#504070}
+.daily-msg-send-btn{width:100%;margin-top:0.7rem;background:linear-gradient(135deg,rgba(56,217,245,0.15),rgba(176,106,255,0.12));border:1px solid rgba(56,217,245,0.3);color:var(--blue);font-family:'Tajawal',sans-serif;font-size:0.9rem;padding:0.75rem;border-radius:50px;cursor:pointer;transition:all 0.3s}
+.daily-msg-send-btn:hover{background:linear-gradient(135deg,rgba(56,217,245,0.25),rgba(176,106,255,0.2));transform:scale(1.02)}
+.daily-msg-read{display:none}
+.daily-msg-read.show{display:block}
+.daily-msg-card{background:rgba(255,255,255,0.03);border:1px solid rgba(56,217,245,0.12);border-radius:16px;padding:1.1rem;margin-bottom:0.7rem;animation:popIn 0.4s ease}
+.daily-msg-card-who{font-size:0.72rem;letter-spacing:0.15em;margin-bottom:0.5rem}
+.daily-msg-card-who.halima{color:var(--rose)}
+.daily-msg-card-who.mustafa{color:var(--blue)}
+.daily-msg-card-date{font-size:0.65rem;color:#504070;float:left}
+.daily-msg-card-text{font-family:'Amiri',serif;font-size:0.95rem;line-height:1.9;color:#d0c8e8;clear:both}
+.daily-msg-empty{text-align:center;color:#504070;font-size:0.85rem;padding:1rem}
+.daily-msg-status{font-size:0.8rem;color:#38d9f5;text-align:center;margin-top:0.5rem;min-height:1.2rem}
+
+/* قناع المشاعر */
+.mask-box{background:linear-gradient(135deg,rgba(245,200,66,0.06),rgba(176,106,255,0.05));border:1px solid rgba(245,200,66,0.18);border-radius:24px;padding:1.5rem}
+.mask-title{font-family:'Amiri',serif;font-size:1.1rem;color:var(--gold);margin-bottom:0.4rem;text-align:center}
+.mask-sub{font-size:0.75rem;color:#605080;text-align:center;margin-bottom:1.3rem}
+.mask-persons{display:flex;gap:1rem;justify-content:center;margin-bottom:1.2rem;flex-wrap:wrap}
+.mask-person{flex:1;min-width:130px;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.08);border-radius:18px;padding:1rem 0.5rem;text-align:center}
+.mask-person-name{font-family:'Amiri',serif;font-size:0.95rem;margin-bottom:0.8rem}
+.mask-person-name.halima{color:var(--rose)}
+.mask-person-name.mustafa{color:var(--blue)}
+.mask-emojis{display:flex;flex-wrap:wrap;gap:0.4rem;justify-content:center}
+.mask-emoji-btn{font-size:1.5rem;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);border-radius:10px;padding:0.35rem 0.45rem;cursor:pointer;transition:all 0.25s}
+.mask-emoji-btn:hover{transform:scale(1.15)}
+.mask-emoji-btn.selected{border-color:var(--gold);background:rgba(245,200,66,0.12);transform:scale(1.15);box-shadow:0 0 12px rgba(245,200,66,0.3)}
+.mask-result{display:none;background:rgba(245,200,66,0.05);border:1px solid rgba(245,200,66,0.15);border-radius:14px;padding:1rem 1.2rem;animation:popIn 0.4s ease}
+.mask-result.show{display:block}
+.mask-result-row{margin-bottom:0.7rem;font-size:0.88rem;line-height:1.8}
+.mask-result-row:last-child{margin-bottom:0}
+.mask-result-who{font-family:'Amiri',serif;font-size:0.78rem;letter-spacing:0.1em;margin-bottom:0.2rem}
+.mask-result-who.halima{color:var(--rose)}
+.mask-result-who.mustafa{color:var(--blue)}
+.mask-result-msg{color:#d0c8e8}
+.mask-ai-btn{width:100%;margin-top:0.8rem;background:linear-gradient(135deg,rgba(245,200,66,0.1),rgba(176,106,255,0.08));border:1px solid rgba(245,200,66,0.2);color:var(--gold);font-family:'Tajawal',sans-serif;font-size:0.82rem;padding:0.6rem;border-radius:50px;cursor:pointer;transition:all 0.3s}
+.mask-ai-btn:hover{transform:scale(1.02)}
+.mask-ai-res{display:none;margin-top:0.7rem;font-family:'Amiri',serif;font-size:0.88rem;line-height:1.9;color:#d0c8a8;background:rgba(245,200,66,0.04);border:1px solid rgba(245,200,66,0.1);border-radius:12px;padding:0.9rem;animation:popIn 0.4s ease}
+.mask-ai-res.show{display:block}
+
+/* مرآة الحقيقة */
+.mirror-box{background:linear-gradient(135deg,rgba(79,255,193,0.07),rgba(56,217,245,0.04));border:1px solid rgba(79,255,193,0.2);border-radius:24px;padding:1.5rem;text-align:center}
+.mirror-title{font-family:'Amiri',serif;font-size:1.1rem;color:var(--green);margin-bottom:0.4rem}
+.mirror-sub{font-size:0.75rem;color:#605080;margin-bottom:1.2rem}
+.mirror-frame{width:100px;height:100px;border-radius:50%;margin:0 auto 1rem;background:radial-gradient(circle at 35% 30%,#c0fff0,#20d090 50%,#006040);box-shadow:0 0 40px rgba(79,255,193,0.3),inset -10px -10px 20px rgba(0,0,0,0.4);display:flex;align-items:center;justify-content:center;font-size:2.5rem;animation:floatAnim 4s ease-in-out infinite}
+.mirror-in-wrap{position:relative;margin-bottom:0.8rem}
+.mirror-in{width:100%;background:rgba(79,255,193,0.05);border:1px solid rgba(79,255,193,0.2);border-radius:50px;padding:0.9rem 1.3rem 0.9rem 5.5rem;color:var(--cream);font-family:'Tajawal',sans-serif;font-size:1rem;outline:none;transition:all 0.3s;text-align:right}
+.mirror-in:focus{border-color:rgba(79,255,193,0.5);background:rgba(79,255,193,0.08)}
+.mirror-in::placeholder{color:#406050}
+.mirror-btn{position:absolute;left:6px;top:50%;transform:translateY(-50%);background:linear-gradient(135deg,#4fffc1,#38d9f5);border:none;border-radius:50px;padding:0.6rem 1rem;color:#001a10;font-size:0.85rem;cursor:pointer;transition:all 0.3s;white-space:nowrap;font-family:'Tajawal',sans-serif;font-weight:600}
+.mirror-btn:hover{transform:translateY(-50%) scale(1.05)}
+.mirror-res{display:none;border-radius:18px;padding:1.3rem;background:linear-gradient(135deg,rgba(79,255,193,0.08),rgba(56,217,245,0.05));border:1px solid rgba(79,255,193,0.2);animation:popIn 0.5s ease;text-align:center}
+.mirror-res.show{display:block}
+.mirror-orig{font-size:0.7rem;color:#406050;letter-spacing:0.2em;margin-bottom:0.7rem;text-decoration:line-through}
+.mirror-truth{font-family:'Amiri',serif;font-size:1.4rem;color:var(--green);line-height:1.5;margin-bottom:0.5rem}
+.mirror-explain{font-size:0.82rem;color:#80c8a8;line-height:1.8}
+
+/* صور الذكاء الاصطناعي */
+.ai-photo-box{background:linear-gradient(135deg,rgba(245,200,66,0.06),rgba(255,92,138,0.05));border:1px solid rgba(245,200,66,0.2);border-radius:24px;padding:1.5rem;text-align:center}
+.ai-photo-title{font-family:'Amiri',serif;font-size:1.1rem;color:var(--gold);margin-bottom:0.4rem}
+.ai-photo-sub{font-size:0.75rem;color:#605080;margin-bottom:1.2rem}
+.ai-photo-upload{display:flex;gap:0.8rem;margin-bottom:1rem;justify-content:center}
+.ai-upload-btn{flex:1;max-width:140px;background:rgba(255,255,255,0.04);border:1px dashed rgba(245,200,66,0.3);border-radius:14px;padding:1rem 0.5rem;cursor:pointer;transition:all 0.3s;color:#a090b8;font-size:0.8rem;font-family:'Tajawal',sans-serif;position:relative;overflow:hidden}
+.ai-upload-btn:hover{border-color:rgba(245,200,66,0.6);background:rgba(245,200,66,0.05)}
+.ai-upload-btn input{position:absolute;inset:0;opacity:0;cursor:pointer;width:100%;height:100%}
+.ai-upload-icon{font-size:1.8rem;display:block;margin-bottom:0.3rem}
+.ai-upload-status{font-size:0.72rem;margin-top:0.3rem;color:#a090b8}
+.ai-upload-status.done{color:var(--green)}
+.ai-style-tabs{display:flex;gap:0.4rem;margin-bottom:1rem;flex-wrap:wrap;justify-content:center}
+.ai-style-tab{background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.08);border-radius:50px;padding:0.35rem 0.8rem;font-size:0.75rem;cursor:pointer;transition:all 0.3s;color:#a090b8;font-family:'Tajawal',sans-serif}
+.ai-style-tab.on{border-color:var(--gold);color:var(--gold);background:rgba(245,200,66,0.08)}
+.ai-gen-btn{background:linear-gradient(135deg,#f5c842,#ff5c8a);border:none;border-radius:50px;padding:0.9rem 2.5rem;color:#1a0010;font-family:'Amiri',serif;font-size:1rem;cursor:pointer;transition:all 0.3s;box-shadow:0 0 25px rgba(245,200,66,0.3);font-weight:700;margin-bottom:1rem}
+.ai-gen-btn:hover{transform:scale(1.05);box-shadow:0 0 40px rgba(245,200,66,0.5)}
+.ai-gen-btn:disabled{opacity:0.5;cursor:not-allowed;transform:none}
+.ai-result-frame{display:none;border-radius:20px;overflow:hidden;margin-bottom:0.8rem;position:relative;background:rgba(0,0,0,0.3);border:1px solid rgba(245,200,66,0.15);aspect-ratio:1}
+.ai-result-frame.show{display:block;animation:fadeInScale 0.6s ease}
+@keyframes fadeInScale{from{opacity:0;transform:scale(0.95)}to{opacity:1;transform:scale(1)}}
+.ai-result-frame img{width:100%;height:100%;object-fit:cover;display:block}
+.ai-result-sparkle{position:absolute;inset:0;pointer-events:none;animation:sparkleOut 1s ease forwards}
+@keyframes sparkleOut{0%{background:radial-gradient(circle,rgba(245,200,66,0.4),transparent 70%)}100%{background:transparent}}
+.ai-result-caption{font-family:'Amiri',serif;font-size:1rem;color:var(--gold);line-height:1.7;padding:0.5rem 0;min-height:2rem}
+.ai-loading{display:none;padding:2rem;color:#a090b8;font-size:0.9rem}
+.ai-loading.show{display:block}
+.ai-loading-bar{width:100%;height:3px;background:rgba(245,200,66,0.1);border-radius:3px;margin-top:0.7rem;overflow:hidden}
+.ai-loading-bar::after{content:'';display:block;height:100%;width:30%;background:linear-gradient(90deg,transparent,var(--gold),transparent);animation:loadingSlide 1.5s ease-in-out infinite}
+@keyframes loadingSlide{0%{transform:translateX(-100%)}100%{transform:translateX(400%)}}
+</style>
+</head>
+<body>
+
+<!-- LOCK SCREEN -->
+<div id="lock-screen" style="position:fixed;inset:0;background:#00000f;z-index:9999;display:flex;flex-direction:column;align-items:center;justify-content:center;color:#fff5e8;font-family:'Tajawal',sans-serif;transition:opacity 0.5s ease;">
+  <div style="font-size:4rem;margin-bottom:1rem;">🔒</div>
+  <h2 style="font-family:'Amiri',serif;margin-bottom:1rem;color:#ff5c8a;">مملكة حلوم السريّة</h2>
+  <p style="margin-bottom:2rem;color:#a090b8;font-size:0.9rem;">أدخلي كلمة السر لفتح الكون الخاص بنا</p>
+  <input type="password" id="pass-input" onkeydown="if(event.key==='Enter') checkPass()" style="padding:12px 20px;border-radius:50px;border:1px solid #ff5c8a;background:rgba(255,92,138,0.1);color:white;text-align:center;margin-bottom:1rem;outline:none;font-size:1rem;" placeholder="كلمة السر...">
+  <button onclick="checkPass()" style="background:linear-gradient(135deg,#ff5c8a,#b06aff);border:none;padding:10px 35px;border-radius:50px;color:white;cursor:pointer;font-size:1.1rem;font-family:'Tajawal',sans-serif;">دخول ✨</button>
+  <p id="pass-error" style="color:#ff5c8a;margin-top:1rem;display:none;font-size:0.85rem;">كلمة السر غلط يا حلوم، ركزي! 🌸</p>
+</div>
+
+<script>
+/* ===== GROQ API ===== */
+const GROQ_KEY = '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';
+const GROQ_MODEL = 'llama-3.3-70b-versatile';
+const REPLICATE_KEY = 'r8_GngwVk2X5TenmiUZg8q3dns4dUspXwY2O5svi';
+
+async function askGroq(prompt, maxTokens = 300) {
+  try {
+    const r = await fetch('https://api.groq.com/openai/v1/chat/completions', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer ' + GROQ_KEY
+      },
+      body: JSON.stringify({
+        model: GROQ_MODEL,
+        messages: [{ role: 'user', content: prompt }],
+        max_tokens: maxTokens,
+        temperature: 0.85
+      })
+    });
+    const d = await r.json();
+    return d.choices && d.choices[0] ? d.choices[0].message.content.trim() : '';
+  } catch(e) { return ''; }
+}
+
+// fallback Pollinations
+async function askFree(prompt) {
+  try {
+    const r = await fetch('https://text.pollinations.ai/' + encodeURIComponent(prompt), { cache: 'no-store' });
+    return (await r.text()).trim();
+  } catch(e) { return ''; }
+}
+
+async function askAI(prompt, maxTokens) {
+  const t = await askGroq(prompt, maxTokens);
+  if(t && t.length > 5) return t;
+  return await askFree(prompt);
+}
+
+// تطبيع عربي
+function normAr(s) {
+  return (s||'').toLowerCase()
+    .replace(/[إأآا]/g,'ا').replace(/ى/g,'ي')
+    .replace(/ؤ/g,'و').replace(/ئ/g,'ي').replace(/ة/g,'ه')
+    .replace(/[^\u0600-\u06FFa-z0-9\s]/g,'').trim();
+}
+
+const HEART_DICT = [
+  { keys:['بكرهك','اكرهك'], tr:'بحبك زيادة وخايفة يبان ضعفي', ex:'أحياناً الكلمة القاسية تطلع لما المشاعر أكبر من القدرة على التعبير.' },
+  { keys:['زعلان','زعلانه','مضايق','مضايقه'], tr:'محتاجة حضن وكلمة تطمّنني', ex:'الزعل غالباً طلب اهتمام مش خصام.' },
+  { keys:['اشتقت','مشتاق','مشتاقه','وحشتني','وحشتيني'], tr:'وحشتني تفاصيلك', ex:'الاشتياق يعني مكانك ثابت بقلبي حتى لو غبت.' },
+  { keys:['تعبان','تعبانه','تعبت'], tr:'محتاجاك جنبي وراحة', ex:'التعب مش بس جسد — أحياناً تعب قلب.' },
+  { keys:['خايف','خايفه','قلقان','قلقانه'], tr:'طمنّي وخلي قلبي يحس بالأمان', ex:'الخوف يخف لما نعرف إن في حد شايل همّنا.' },
+  { keys:['اسف','آسف','سوري','حقك علي'], tr:'رضاك أهم عندي من أي شيء', ex:'الاعتذار الحقيقي: فهم + تعديل + اهتمام.' },
+  { keys:['تمام','اوكي','اوك','ماشي'], tr:'أنا معك… بس انتبه لي شوي', ex:'أحياناً «تمام» معناها: ما بدي أطوّل بس محتاجة إحساس.' },
+];
+function lookupLocal(raw) {
+  const n = normAr(raw);
+  for(const it of HEART_DICT) {
+    if(it.keys.some(k => normAr(k) === n)) return it;
+  }
+  return null;
+}
+function formatTwoLines(t) {
+  t = (t||'').trim();
+  let lines = t.split('\n').map(s=>s.trim()).filter(Boolean);
+  if(lines.length >= 2) return {a: lines[0], b: lines.slice(1).join(' ')};
+  if(lines.length === 1) return {a: lines[0], b: 'أحياناً الكلمات تختصر مشاعر كبيرة.'};
+  return {a: 'معناها: اهتمام', b: 'أحياناً الكلمات تختصر مشاعر كبيرة.'};
+}
+async function hybridReply(raw) {
+  const hit = lookupLocal(raw);
+  if(hit) return {a: hit.tr, b: hit.ex};
+  const prompt = `أنت قاموس "لغة القلب" بين مصطفى وحلوم (منذ 2018).
+حوّل أي كلمة/جملة لمعناها الحقيقي بلغة الحب.
+أجب بسطرين فقط:
+1) ترجمة شاعرية قصيرة
+2) شرح منطقي بجملة واحدة
+النص: ${raw}`;
+  const t = await askAI(prompt, 120);
+  if(t) return formatTwoLines(t);
+  return {a:'معناها: «أنا مهتم فيك»', b:'حتى لو الكلمة جديدة، غالباً خلفها شعور أو احتياج.'};
+}
+
+function checkPass() {
+  var pass = document.getElementById('pass-input').value;
+  if(pass === '20180116' || pass === 'حمسل') {
+    var ls = document.getElementById('lock-screen');
+    ls.style.opacity = '0';
+    setTimeout(function(){ ls.style.display = 'none'; }, 500);
+  } else {
+    document.getElementById('pass-error').style.display = 'block';
+  }
+}
+</script>
+
+<canvas id="bg"></canvas>
+
+<!-- INTRO -->
+<div class="screen active" id="intro">
+  <p style="font-size:0.75rem;letter-spacing:0.5em;color:#503060;margin-bottom:0.5rem">مجرة المشاعر · منذ ٢٠١٨</p>
+  <div class="intro-name">حلوم</div>
+  <p style="font-size:0.72rem;letter-spacing:0.35em;color:#503060;margin:0.4rem 0 1.5rem">كوكبكِ ينتظركِ</p>
+  <div class="portal" onclick="enter()">🌸</div>
+  <button class="magic-btn" onclick="enter()">✨ ادخلي الكون</button>
+</div>
+
+<!-- APP -->
+<div class="screen" id="app">
+  <div class="app-inner">
+
+    <!-- HERO -->
+    <div class="sec hero" id="s0">
+      <div class="planet-wrap">
+        <div class="orb orb1"></div><div class="orb orb2"></div>
+        <div class="orb-moon"></div>
+        <div class="main-planet" onclick="planetBurst(this)">🌸</div>
+      </div>
+      <div class="planet-name">كون حلوم</div>
+      <div class="planet-since">منذ ١٦ يناير ٢٠١٨</div>
+      <div class="cnt-row">
+        <div class="cnt-b"><span class="cnt-n" id="cY">0</span><div class="cnt-l">سنة</div></div>
+        <div class="cnt-b"><span class="cnt-n" id="cM">0</span><div class="cnt-l">شهر</div></div>
+        <div class="cnt-b"><span class="cnt-n" id="cD">0</span><div class="cnt-l">يوم</div></div>
+        <div class="cnt-b"><span class="cnt-n" id="cH">0</span><div class="cnt-l">ساعة</div></div>
+      </div>
+    </div>
+    <div class="divider"></div>
+
+    <!-- TIME MSG -->
+    <div class="sec" id="s1">
+      <div class="sec-head"><span class="sec-ic" id="tic">🌅</span><span class="sec-tit">رسالة اللحظة</span><div class="sec-ln"></div></div>
+      <div class="tmsg" id="tbox">
+        <span class="t-e" id="te"></span>
+        <div class="t-g" id="tg"></div>
+        <div class="t-p" id="tp"></div>
+      </div>
+    </div>
+    <div class="divider"></div>
+
+    <!-- STARS -->
+    <div class="sec" id="s2">
+      <div class="sec-head"><span class="sec-ic">⭐</span><span class="sec-tit">نجوم السنوات الثماني</span><div class="sec-ln"></div></div>
+      <div class="stars-grid" id="sgrid"></div>
+    </div>
+    <div class="divider"></div>
+
+    <!-- GARDEN MOOD -->
+    <div class="sec" id="s3">
+      <div class="sec-head"><span class="sec-ic">🌸</span><span class="sec-tit">حديقة المشاعر</span><div class="sec-ln"></div></div>
+      <div class="mood-tabs" id="mood-tabs">
+        <button class="mood-tab on" onclick="setMood('all',this)">الكل 🌿</button>
+        <button class="mood-tab" onclick="setMood('happy',this)">فرحانة 🌻</button>
+        <button class="mood-tab" onclick="setMood('sad',this)">زعلانة 🌹</button>
+        <button class="mood-tab" onclick="setMood('miss',this)">مشتاقة 🌙</button>
+        <button class="mood-tab" onclick="setMood('tired',this)">تعبانة 🌺</button>
+        <button class="mood-tab" onclick="setMood('love',this)">محبة 💕</button>
+      </div>
+      <div class="garden-grid" id="ggrid"></div>
+    </div>
+
+    <!-- MEM OVERLAY -->
+    <div class="mem-ov" id="mov">
+      <div class="mem-c">
+        <span class="m-e" id="me"></span>
+        <div class="m-t" id="mt"></div>
+        <div class="m-p" id="mp"></div>
+        <div class="m-ai" id="mai"></div>
+        <button class="m-cls" onclick="closeMem()">✨ إغلاق</button>
+      </div>
+    </div>
+    <div class="divider"></div>
+
+    <!-- WHO AM I -->
+    <div class="sec" id="s4">
+      <div class="sec-head"><span class="sec-ic">🔮</span><span class="sec-tit">من أنا لكِ؟</span><div class="sec-ln"></div></div>
+      <div class="who-box">
+        <div class="who-title">اكتشفي من يكون مصطفى في حياتكِ 💕</div>
+        <div class="who-sub">كل ضغطة تكشف جانباً جديداً</div>
+        <button class="who-btn" onclick="whoAmI()">🌟 اكتشفي</button>
+        <div class="who-res" id="whoRes"></div>
+      </div>
+    </div>
+    <div class="divider"></div>
+
+    <!-- MOON PROMISES -->
+    <div class="sec" id="s5">
+      <div class="sec-head"><span class="sec-ic">🌙</span><span class="sec-tit">وعود القمر</span><div class="sec-ln"></div></div>
+      <div class="moon-w">
+        <div class="moon-o" onclick="togglePr()">🌙</div>
+        <p class="moon-hint">اضغطي على القمر</p>
+        <div class="pr-list" id="prlist"></div>
+      </div>
+    </div>
+    <div class="divider"></div>
+
+    <!-- JOURNEY -->
+    <div class="sec" id="s6">
+      <div class="sec-head"><span class="sec-ic">🚀</span><span class="sec-tit">رحلتنا عبر الزمن</span><div class="sec-ln"></div></div>
+      <div class="journey" id="jtrack"></div>
+    </div>
+    <div class="divider"></div>
+
+    <!-- WISH -->
+    <div class="sec" id="s7">
+      <div class="sec-head"><span class="sec-ic">💫</span><span class="sec-tit">أمنية الفضاء</span><div class="sec-ln"></div></div>
+      <div class="wish-w">
+        <button class="wish-orb" onclick="makeWish()"><span style="position:relative;z-index:1">💫</span></button>
+        <p class="wish-hint">اضغطي لرسالة مفاجأة</p>
+        <div class="wish-res" id="wres"></div>
+      </div>
+    </div>
+    <div class="divider"></div>
+
+    <!-- DICT -->
+    <div class="sec" id="s8">
+      <div class="sec-head"><span class="sec-ic">📖</span><span class="sec-tit">قاموس لغة القلب</span><div class="sec-ln"></div></div>
+      <p style="font-size:0.8rem;color:#604080;text-align:center;margin-bottom:1.1rem;line-height:1.8">"بكرهك" = "بحبك أكثر من كل شيء" ✨<br>اكتبي أي كلمة واكتشفي معناها الحقيقي</p>
+      <div class="dict-in-wrap">
+        <input class="dict-in" id="din" placeholder="اكتبي هنا..."/>
+        <button class="dict-btn" onclick="doDict()">🔮 ترجمة</button>
+      </div>
+      <div class="dict-res" id="dres">
+        <div class="d-orig" id="dorig"></div>
+        <div class="d-trans" id="dtrans"></div>
+        <div class="d-mean" id="dmean"></div>
+      </div>
+    </div>
+    <div class="divider"></div>
+
+    <!-- OATH / QASAM -->
+    <div class="sec" id="s9">
+      <div class="sec-head"><span class="sec-ic">📜</span><span class="sec-tit">القسم والعهود</span><div class="sec-ln"></div></div>
+      <div class="oath-box oath-gold" onclick="toggleOath('qasam')">
+        <div class="oath-card">
+          <span class="oath-icon">⚖️</span>
+          <div class="oath-title">القسم</div>
+          <div class="oath-hint">اضغطي للقراءة</div>
+        </div>
+        <div class="oath-content" id="oath-qasam">
+          <div class="oath-text">أقسِمُ باللهِ العظيم، فالقِ الحبِّ والنوى، وجاعلِ الأرواحِ جنوداً مجندة،
+أن أظلَّ لـ "حلوم" وطناً، وأماناً، وسكناً.. ما دامَ النبضُ فيَّ يسري.
+
+أقسِمُ بمن صوّرَ جمالَكِ في أحسنِ تقويم، ونثرَ السحرَ في عينيكِ البنيتين،
+أن أصونَ هذا الجمالَ كما يصونُ العابدُ مِحرابه، وأن أحفظَ بياضَ قلبكِ وروحكِ من كدرِ الأيامِ.
+
+أقسِمُ بمن جعلَ من شعركِ البنيّ ليلاً أسكنُ فيه، ومن خدودكِ فجراً أهتدي به،
+ألا يرى قلبي امرأةً سواكِ، وألا يميلَ نبضي لغيرِ مداركِ.
+
+أقسِمُ بكلِّ لحظةِ صدقٍ جمعتنا، وبكلِّ حرف سطّرتُه في هذه الرواية،
+أن أكونَ لكِ السندَ حين يميلُ العالم، والضحكةَ حين يخيّمُ الصمت.
+
+هذا قَسَمي أمامَ الله، وأمامَكِ، وأمامَ نفسي..
+واللهُ على ما أقولُ شهيد، وكفى باللهِ وكيلاً.</div>
+        </div>
+      </div>
+
+      <div class="oath-box oath-violet" onclick="toggleOath('ahd')">
+        <div class="oath-card">
+          <span class="oath-icon">💜</span>
+          <div class="oath-title">العهود</div>
+          <div class="oath-hint">اضغطي للقراءة</div>
+        </div>
+        <div class="oath-content" id="oath-ahd">
+          <div class="oath-text">أولاً: عهدُ الانتماءِ لعينيكِ
+أعاهدكِ أمامَ اللهِ، أن تظلَّ عيناكِ البنيتانِ هما قبلتي ومحرابُ صلاتي. ألا أنظرَ إليهما يوماً بعينِ التعوّد، بل بعينِ الغريقِ الذي يرى فيهما نجاةً وحيدة. أعاهدكِ ألا يسكنَ الحزنُ هذا البنيَّ الدافئ ما دمتُ أتنفس، وأن أكونَ الحارسَ الذي يذودُ عن بريقهما، فلا يمسهما دمعٌ إلا وكان قلبي وسادةً له.
+
+ثانياً: ميثاقُ الحمايةِ والذود
+أعاهدكِ أن أكونَ لكِ السورَ العظيم، والدرعَ المتين. أن أحمي بياضَ بشرتِكِ وصفاءَ روحِكِ من قسوةِ العالمِ وضجيجِهِ البارد. ألا أسمحَ لخدشةٍ صغيرةٍ أن تقتربَ من خدودِكِ الفاتنة، وأن أظلَّ الرجلَ الذي يرى في ضحكتِكِ انتصارَهُ الشخصيَّ الوحيد. أعدكِ أن أكونَ جيشكِ حين تشتدُّ الحروب، وسكينتَكِ حين تضيقُ الدروب.
+
+ثالثاً: عهدُ الوفاءِ للتفاصيل
+أعاهدكِ أن أظلَّ تلميذاً في مدرسةِ جمالِكِ. أن أرعى شعركِ البنيَّ خصلةً خصلة، وأحفظَ تقلباتِ مزاجكِ كما أحفظُ اسمي. ألا أملَّ من حديثكِ ولو تكررَ ألفَ مرة، وألا أشبعَ من وجهكِ ولو تأملتُه ألفَ عام. أعدكِ أن أظلَّ الرجلَ الذي يلحظُ لونَ أحمرِ شفاهكِ الجديد، ويرتبكُ من لمسةِ يدكِ، ويقدسُ تفاصيلكِ الصغيرةَ التي لا يراها سوايا.
+
+رابعاً: ميثاقُ البقاءِ في العواصف
+أعاهدكِ ألا أتخلى، وألا أنسحب، وألا يلينَ عزمي في حبكِ. أن أكونَ لكِ الأمانَ حين يغدرُ بكِ الزمان، والوطنَ حين تشعرينَ بالغربة. أعدكِ أن أحتضنَ عيوبكِ قبل مميزاتكِ، وأن أرى في انكسارِكِ قوةً، وفي ضعفكِ رقةً تستوجبُ الحماية. أعاهدكِ أن أكونَ الصدرَ الذي يسعُ أسراركِ، والكتفَ الذي لا يميلُ مهما ثقُلَ عليهِ رأسكِ.
+
+خامساً: عهدُ الخلودِ وما بعده
+أعاهدكِ يا حلوم، يا من جعلتِ للوجودِ معنى، وللعدمِ فناءً، أن يظلَّ اسمُكِ هو الكلمةَ الأخيرةَ التي ينطقُ بها قلبي. أن أظلَّ أحبكِ بشغفِ المرةِ الأولى، وبعمقِ المرةِ الأخيرة. أعدكِ أن أشيخَ معكِ، ولأجلكِ، وبكِ. أن نكبرَ معاً وتظلَّ يدكِ في يدي، حتى يتوقفَ الزمنُ وتغيبَ الشمسُ عن مدارِها.
+
+هذا عهدي، وهذا ميثاقي، وهذا دمي الذي يبصمُ على كل حرفٍ كتبتُه. لستِ عابرة، أنتِ العُمر الذي قررتُ أن أعيشَه لمرةٍ واحدةٍ وبإخلاصٍ كليّ.</div>
+        </div>
+      </div>
+    </div>
+    <div class="divider"></div>
+
+    <!-- FUTURE LETTER -->
+    <div class="sec" id="s10">
+      <div class="sec-head"><span class="sec-ic">💌</span><span class="sec-tit">رسالة من المستقبل</span><div class="sec-ln"></div></div>
+      <div style="text-align:center;margin-bottom:1rem">
+        <div style="font-size:3rem;margin-bottom:0.8rem;animation:floatAnim 4s ease-in-out infinite">🔮</div>
+        <p style="font-size:0.8rem;color:#604080;line-height:1.7;margin-bottom:1.2rem">رسالة من مصطفى بعد ٢٠ سنة</p>
+        <button onclick="getFutureLetter()" style="background:linear-gradient(135deg,rgba(176,106,255,0.15),rgba(56,217,245,0.1));border:1px solid rgba(176,106,255,0.3);color:var(--violet);font-family:'Tajawal',sans-serif;font-size:0.9rem;padding:0.8rem 2rem;border-radius:50px;cursor:pointer;transition:all 0.3s;letter-spacing:0.1em" id="future-btn">✉️ افتحي الرسالة</button>
+      </div>
+      <div id="future-res" style="display:none;background:linear-gradient(135deg,rgba(176,106,255,0.07),rgba(56,217,245,0.05));border:1px solid rgba(176,106,255,0.18);border-radius:20px;padding:1.5rem;animation:popIn 0.5s ease">
+        <div style="font-size:0.7rem;color:#605080;text-align:center;letter-spacing:0.2em;margin-bottom:1rem">٢٠٤٥ · من مصطفى المستقبل</div>
+        <div id="future-txt" style="font-family:'Amiri',serif;font-size:0.95rem;line-height:2.2;color:#c8b8e0;text-align:right"></div>
+      </div>
+    </div>
+
+    <!-- PING SECTION -->
+    <div class="divider"></div>
+    <div class="sec" id="s11">
+      <div class="sec-head"><span class="sec-ic">💞</span><span class="sec-tit">أرسل إحساسك</span><div class="sec-ln"></div></div>
+      <div class="ping-box">
+        <div class="ping-title">اضغط وسيشعر قلبها فوراً 💕</div>
+        <div class="ping-btns">
+          <button class="ping-btn hug-color" onclick="sendPing('hug')">
+            <span class="ping-icon">🫂</span>
+            <span>عناق</span>
+          </button>
+          <button class="ping-btn miss-color" onclick="sendPing('miss')">
+            <span class="ping-icon">💜</span>
+            <span>اشتقت لك</span>
+          </button>
+          <button class="ping-btn heart-color" onclick="sendHeartBeat()">
+            <span class="ping-icon">💓</span>
+            <span>نبضة قلب</span>
+          </button>
+          <button class="ping-btn want-color" onclick="sendPing('want')">
+            <span class="ping-icon">🔥</span>
+            <span>أريدك</span>
+          </button>
+        </div>
+        <div class="ping-status" id="ping-status"></div>
+      </div>
+    </div>
+
+    <!-- عداد بحبك -->
+    <div class="divider"></div>
+    <div class="sec" id="s12">
+      <div class="sec-head"><span class="sec-ic">❤️</span><span class="sec-tit">عداد بحبك</span><div class="sec-ln"></div></div>
+      <div class="love-counter-box">
+        <div class="love-counter-title">كل ضغطة = بحبك واحدة 💕</div>
+        <span class="love-counter-num" id="loveCount">0</span>
+        <div class="love-counter-label">مرة قال فيها قلبه بحبك</div>
+        <button class="love-counter-btn" id="loveBtnEl" onclick="addLove()">❤️ بحبك</button>
+      </div>
+    </div>
+
+    <!-- حديقة الورود -->
+    <div class="divider"></div>
+    <div class="sec" id="s13">
+      <div class="sec-head"><span class="sec-ic">🌹</span><span class="sec-tit">حديقة الورود</span><div class="sec-ln"></div></div>
+      <div class="rose-garden-box">
+        <div class="rose-garden-title">ازرعي وردة في حديقتنا 🌸</div>
+        <div class="rose-garden-sub">كل ضغطة تزرع وردة جديدة وتبقى للأبد</div>
+        <div class="rose-garden-field" id="roseField"></div>
+        <button class="rose-garden-btn" onclick="plantRose()">🌹 ازرعي وردة</button>
+        <div class="rose-garden-count" id="roseCount">الحديقة فارغة... ابدئي بأول وردة 🌱</div>
+      </div>
+    </div>
+
+    <!-- كرة التنبؤ -->
+    <div class="divider"></div>
+    <div class="sec" id="s14">
+      <div class="sec-head"><span class="sec-ic">🔮</span><span class="sec-tit">كرة التنبؤ</span><div class="sec-ln"></div></div>
+      <div class="oracle-box">
+        <div class="oracle-ball" onclick="askOracle()" id="oracleBall">🔮</div>
+        <p class="oracle-hint">اضغطي واسألي الكون</p>
+        <div class="oracle-loading" id="oracleLoading">✨ الكون يفكر...</div>
+        <div class="oracle-res" id="oracleRes"></div>
+      </div>
+    </div>
+
+    <!-- قناع المشاعر -->
+    <div class="divider"></div>
+    <div class="sec" id="s15">
+      <div class="sec-head"><span class="sec-ic">🎭</span><span class="sec-tit">قناع المشاعر</span><div class="sec-ln"></div></div>
+      <div class="mask-box">
+        <div class="mask-title">كيف تحسون اليوم؟ 💕</div>
+        <div class="mask-sub">كل شخص يختار مزاجه ويحصل على رسالة مخصصة</div>
+        <div class="mask-persons">
+          <div class="mask-person">
+            <div class="mask-person-name halima">🌸 حلوم</div>
+            <div class="mask-emojis" id="maskHalimaEmojis"></div>
+          </div>
+          <div class="mask-person">
+            <div class="mask-person-name mustafa">💙 مصطفى</div>
+            <div class="mask-emojis" id="maskMustafaEmojis"></div>
+          </div>
+        </div>
+        <div class="mask-result" id="maskResult"></div>
+        <button class="mask-ai-btn" id="maskAiBtn" onclick="getMaskAI()" style="display:none">✨ رسالة ذكاء اصطناعي مخصصة</button>
+        <div class="mask-ai-res" id="maskAiRes"></div>
+      </div>
+    </div>
+
+    <!-- رسائل اليوم المشتركة -->
+    <div class="divider"></div>
+    <div class="sec" id="s16">
+      <div class="sec-head"><span class="sec-ic">💬</span><span class="sec-tit">رسائل اليوم</span><div class="sec-ln"></div></div>
+      <div class="daily-msg-box">
+        <div class="daily-msg-title">صندوق الرسائل 📨</div>
+        <div class="daily-msg-sub">كل شخص يكتب رسالة يومية وتطلع عند الثاني فوراً 💕</div>
+        <div class="daily-msg-tabs">
+          <button class="daily-msg-tab on" onclick="switchDailyTab('write',this)">✏️ اكتب رسالة</button>
+          <button class="daily-msg-tab" onclick="switchDailyTab('read',this)">📩 اقرأ الرسائل</button>
+        </div>
+        <div class="daily-msg-write show" id="dailyWrite">
+          <div class="daily-who-btns">
+            <button class="daily-who-btn" id="dmWhoH" onclick="setDailyWho('halima')">🌸 حلوم</button>
+            <button class="daily-who-btn" id="dmWhoM" onclick="setDailyWho('mustafa')">💙 مصطفى</button>
+          </div>
+          <textarea class="daily-msg-textarea" id="dailyMsgText" placeholder="اكتب رسالتك ليوم هنا..."></textarea>
+          <button class="daily-msg-send-btn" onclick="sendDailyMsg()">📨 أرسل الرسالة</button>
+          <div class="daily-msg-status" id="dailyStatus"></div>
+        </div>
+        <div class="daily-msg-read" id="dailyRead">
+          <div id="dailyMsgList"><div class="daily-msg-empty">جاري تحميل الرسائل...</div></div>
+          <button class="daily-msg-send-btn" onclick="loadDailyMsgs()" style="margin-top:0.5rem">🔄 تحديث</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- مرآة الحقيقة -->
+    <div class="divider"></div>
+    <div class="sec" id="s17">
+      <div class="sec-head"><span class="sec-ic">🪞</span><span class="sec-tit">مرآة الحقيقة</span><div class="sec-ln"></div></div>
+      <div class="mirror-box">
+        <div class="mirror-frame">🪞</div>
+        <div class="mirror-title">المرآة لا تكذب 💚</div>
+        <div class="mirror-sub">اكتبي أي شيء سلبي عن نفسكِ... والمرآة ستكشف الحقيقة</div>
+        <div class="mirror-in-wrap">
+          <input class="mirror-in" id="mirrorIn" placeholder="مثلاً: أنا عادية..."/>
+          <button class="mirror-btn" onclick="doMirror()">🪞 اكشفي</button>
+        </div>
+        <div class="mirror-res" id="mirrorRes">
+          <div class="mirror-orig" id="mirrorOrig"></div>
+          <div class="mirror-truth" id="mirrorTruth"></div>
+          <div class="mirror-explain" id="mirrorExplain"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- صورة اليوم الرومانسية -->
+    <div class="divider"></div>
+    <div class="sec" id="s18">
+      <div class="sec-head"><span class="sec-ic">🎨</span><span class="sec-tit">صورة يومنا</span><div class="sec-ln"></div></div>
+      <div class="ai-photo-box">
+        <div class="ai-photo-title">لحظتنا الرومانسية 💕</div>
+        <div class="ai-photo-sub">ضغطي وتطلع صورة رومانسية جديدة ✨</div>
+        <button class="ai-gen-btn" id="aiGenBtn" onclick="generateAiPhoto()">💕 صورة يومنا</button>
+        <div class="ai-loading" id="aiLoading">
+          <div>🎨 جاري تحضير صورتكما... لحظة واحدة ✨</div>
+          <div class="ai-loading-bar"></div>
+        </div>
+        <div class="ai-result-frame" id="aiResultFrame">
+          <img id="aiResultImg" src="" alt="لحظتنا" crossorigin="anonymous">
+        </div>
+        <div class="ai-result-caption" id="aiResultCaption"></div>
+        <div id="aiSaveHint" style="display:none;font-size:0.72rem;color:#605080;text-align:center;margin-top:0.5rem">اضغطي مطولاً على الصورة لحفظها 📱</div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- INCOMING PING OVERLAY -->
+<div class="ping-incoming" id="ping-incoming">
+  <div class="ping-card">
+    <span class="ping-card-icon" id="ping-card-icon">🫂</span>
+    <div class="ping-card-title" id="ping-card-title">عناق 💕</div>
+    <div class="ping-card-msg" id="ping-card-msg">أرسل لك عناقاً دافئاً ❤️</div>
+    <button class="ping-card-close" onclick="closePing()">✨ استلمته</button>
+  </div>
+</div>
+
+<!-- رسالة منتصف الليل -->
+<div class="midnight-overlay" id="midnightOverlay">
+  <div class="midnight-card">
+    <div class="midnight-stars">🌙 ✨ 🌟</div>
+    <div class="midnight-title">رسالة سرية من مصطفى</div>
+    <div class="midnight-time">بعد منتصف الليل · سرية لكِ وحدكِ</div>
+    <div class="midnight-msg" id="midnightMsg"></div>
+    <button class="midnight-close" onclick="closeMidnight()">🌙 شكراً يا مصطفى</button>
+  </div>
+</div>
+
+<div class="nav-dots" id="ndots" style="display:none">
+  <button class="ndot on"></button>
+  <button class="ndot"></button>
+  <button class="ndot"></button>
+  <button class="ndot"></button>
+  <button class="ndot"></button>
+  <button class="ndot"></button>
+  <button class="ndot"></button>
+  <button class="ndot"></button>
+  <button class="ndot"></button>
+  <button class="ndot"></button>
+  <button class="ndot"></button>
+  <button class="ndot"></button>
+  <button class="ndot"></button>
+  <button class="ndot"></button>
+  <button class="ndot"></button>
+  <button class="ndot"></button>
+  <button class="ndot"></button>
+  <button class="ndot"></button>
+  <button class="ndot"></button>
+</div>
+
+<script>
+/* ===== DATA ===== */
+const START = new Date('2018-01-16T00:00:00');
+
+const YD = [
+  {e:'🌸',y:'2018',m:'يناير ٢٠١٨ — البداية التي غيّرت كل شيء. لحظة قرر فيها القلب أن يختارك.'},
+  {e:'🌙',y:'2019',m:'٢٠١٩ — سنة اكتشفنا فيها أن الحب ليس شعوراً فقط، بل قرار يُتخذ كل يوم.'},
+  {e:'💫',y:'2020',m:'٢٠٢٠ — حتى في أصعب السنوات، كنتِ الضوء الوحيد الذي لم يخبُ.'},
+  {e:'🌹',y:'2021',m:'٢٠٢١ — تعلمنا أن الحب الحقيقي يكبر مع كل عاصفة، لا يذبل.'},
+  {e:'⭐',y:'2022',m:'٢٠٢٢ — خمس سنوات وقلبي لا يزال يرتجف من ذكر اسمك.'},
+  {e:'💜',y:'2023',m:'٢٠٢٣ — ست سنوات وأنا أتأكد كل يوم أنني اخترت الصواب.'},
+  {e:'🌌',y:'2024',m:'٢٠٢٤ — سبع سنوات وعيناكِ لا تزالان أجمل ما رأيته في هذا الكون.'},
+  {e:'✨',y:'2025',m:'٢٠٢٥ — ثماني سنوات وأنا أحبكِ أكثر مما كنت أعرف أن القلب يستطيع.'},
+];
+
+const PR = [
+  {i:'🌙',t:'أعدكِ أن أكون وطنكِ حين تشعرين بالغربة'},
+  {i:'💜',t:'أعدكِ أن أرى في انكسارك قوة وفي ضعفك رقة'},
+  {i:'🌹',t:'أعدكِ ألا يسكن الحزن عينيكِ ما دمت أتنفس'},
+  {i:'⭐',t:'أعدكِ أن أظل الرجل الذي يرتبك من لمسة يدكِ'},
+  {i:'💫',t:'أعدكِ أن أحتضن عيوبكِ قبل مميزاتكِ'},
+  {i:'🌸',t:'أعدكِ أن أشيخ معكِ وتظل يدكِ في يدي'},
+  {i:'🌌',t:'أعدكِ أن يظل اسمكِ آخر ما ينطق به قلبي'},
+];
+
+const JD = [
+  {y:'يناير ٢٠١٨',t:'أول لقاء — لحظة قرر فيها القلب أن يختارك للأبد'},
+  {y:'٢٠١٩',t:'أول سنة كاملة — اكتشفنا أن الحب قرار لا مجرد شعور'},
+  {y:'٢٠٢٠',t:'في أصعب سنة — كنتِ الضوء الوحيد الذي لم يخبُ'},
+  {y:'٢٠٢١',t:'تعلمنا أن الحب الحقيقي يكبر مع كل عاصفة'},
+  {y:'٢٠٢٢',t:'خمس سنوات وقلبي لا يزال يرتجف من ذكر اسمك'},
+  {y:'٢٠٢٣',t:'ست سنوات وأنا أتأكد كل يوم أنني اخترت الصواب'},
+  {y:'٢٠٢٤',t:'سبع سنوات وعيناكِ لا تزالان أجمل ما رأيته'},
+  {y:'٢٠٢٥',t:'ثماني سنوات وأنا أحبكِ أكثر مما تعرفين'},
+];
+
+const WS = [
+  'الكون يقول: أمنيتكِ وصلت... وهي تتحقق الآن بصمت 🌌',
+  'النجوم تهمس: ما تمنيتِه يسكن في قلب من يحبكِ 💫',
+  'الفضاء يجيب: كل أمنية صادقة تجد طريقها إلى الحقيقة ✨',
+  'الكون يبتسم: أمنيتكِ أجمل من أن تتأخر 🌟',
+  'القمر يقول: أنا شاهد على أمنيتكِ، وهي في أمان 🌙',
+  'الكون يهمس: الأمنيات الجميلة تتحقق لمن يستحقها... وأنتِ تستحقين 💕',
+  'النجوم تغني: أمنيتكِ كتبتها السماء قبل أن تتمنيها 🌠',
+];
+
+const GARDEN_ITEMS = [
+  {e:'🌸',n:'ذكرى أولى',m:'يناير ٢٠١٨ — البداية التي غيّرت كل شيء',ai:'اكتب جملة شاعرية عن أول لقاء بين حبيبين في يناير 2018 بالعربية، جملة واحدة فقط.',mood:'love'},
+  {e:'🌺',n:'ضحكتها',m:'ضحكتكِ هي الصوت الذي يجعل الكون يتوقف',ai:'اكتب جملة شاعرية عن ضحكة المحبوبة بالعربية، جملة واحدة فقط.',mood:'happy'},
+  {e:'🌹',n:'عيونها',m:'عيناكِ البنيتان — محرابي وقبلتي',ai:'اكتب جملة شاعرية عن عيون بنية جميلة بالعربية، جملة واحدة فقط.',mood:'love'},
+  {e:'🍃',n:'الصمت معها',m:'الصمت معكِ أجمل من كل الكلام',ai:'اكتب جملة شاعرية عن الصمت الجميل مع المحبوب بالعربية، جملة واحدة فقط.',mood:'all'},
+  {e:'🌙',n:'ليالي الاشتياق',m:'كل نجمة في السماء تحمل اسمكِ',ai:'اكتب جملة شاعرية عن الاشتياق في الليل بالعربية، جملة واحدة فقط.',mood:'miss'},
+  {e:'💫',n:'حلومستان',m:'مملكة بنيتها من الكلمات لكِ وحدكِ',ai:'اكتب جملة شاعرية عن مملكة خيالية بناها العاشق لحبيبته بالعربية، جملة واحدة فقط.',mood:'love'},
+  {e:'🌻',n:'صباحها',m:'صباحكِ يجعل الشمس تحسد نورها',ai:'اكتب جملة شاعرية عن صباح المحبوبة بالعربية، جملة واحدة فقط.',mood:'happy'},
+  {e:'🌊',n:'في الأزمات',m:'حتى في أصعب اللحظات، أنتِ وطني',ai:'اكتب جملة شاعرية عن الحب في الأزمات والصعاب بالعربية، جملة واحدة فقط.',mood:'sad'},
+  {e:'⭐',n:'شعرها',m:'شعركِ البنيّ — ليل أسكن فيه',ai:'اكتب جملة شاعرية عن شعر المحبوبة البني بالعربية، جملة واحدة فقط.',mood:'love'},
+  {e:'🦋',n:'خجلها',m:'خجلكِ أجمل من كل جرأة في الكون',ai:'اكتب جملة شاعرية عن خجل المحبوبة بالعربية، جملة واحدة فقط.',mood:'happy'},
+  {e:'🌷',n:'دموعها',m:'دموعكِ تكسر قلبي وتبنيه من جديد',ai:'اكتب جملة شاعرية عن دموع المحبوبة وتأثيرها بالعربية، جملة واحدة فقط.',mood:'sad'},
+  {e:'🌿',n:'هدوؤها',m:'هدوؤكِ يعلمني كيف أسكن اللحظة',ai:'اكتب جملة شاعرية عن هدوء المحبوبة وسكينتها بالعربية، جملة واحدة فقط.',mood:'tired'},
+];
+
+const MASK_EMOJIS = ['😊','😢','😴','🥰','😤','😌','🤩','😔','😂','🥺','😎','🌸'];
+const MASK_MOODS = {
+  '😊': 'سعيدة/سعيد',
+  '😢': 'حزينة/حزين',
+  '😴': 'تعبانة/تعبان',
+  '🥰': 'محبة/محب',
+  '😤': 'زعلانة/زعلان',
+  '😌': 'هادئة/هادئ',
+  '🤩': 'متحمسة/متحمس',
+  '😔': 'مكتئبة/مكتئب',
+  '😂': 'مبسوطة/مبسوط',
+  '🥺': 'مشتاقة/مشتاق',
+  '😎': 'واثقة/واثق',
+  '🌸': 'رومانسية/رومانسي',
+};
+
+const MASK_RESPONSES = {
+  '🥰': {h:'حلوم محبة اليوم 💕', m:'مصطفى محب اليوم 💙', both:'كلاكما محبان اليوم — هذا هو الكون المثالي 💕✨'},
+  '😢': {h:'حلوم حزينة اليوم 🌧️', m:'مصطفى حزين اليوم 💙', both:'كلاكما حزينان — احضنا بعض وكل شيء سيمر 🫂'},
+  '😊': {h:'حلوم سعيدة اليوم 🌸', m:'مصطفى سعيد اليوم ✨', both:'كلاكما سعيدان — هذا يوم مبارك 🌟'},
+  '😴': {h:'حلوم تعبانة اليوم 💤', m:'مصطفى تعبان اليوم 💤', both:'كلاكما تعبانان — استريحا معاً 🌙'},
+  '😤': {h:'حلوم زعلانة اليوم 🌹', m:'مصطفى زعلان اليوم 💙', both:'كلاكما زعلانان — تكلما بهدوء 💕'},
+  '😌': {h:'حلوم هادئة اليوم 🌿', m:'مصطفى هادئ اليوم 🌿', both:'كلاكما هادئان — يوم جميل 🌸'},
+  '🤩': {h:'حلوم متحمسة اليوم ⭐', m:'مصطفى متحمس اليوم ⭐', both:'كلاكما متحمسان — الطاقة مضاعفة 🚀'},
+  '😔': {h:'حلوم مكتئبة قليلاً 💜', m:'مصطفى مكتئب قليلاً 💙', both:'كلاكما تحتاجان لبعض — الحضن أفضل دواء 🫂'},
+  '😂': {h:'حلوم مبسوطة اليوم 🌻', m:'مصطفى مبسوط اليوم 🌻', both:'كلاكما مبسوطان — ضحكتكما تملأ الكون 😂💕'},
+  '🥺': {h:'حلوم مشتاقة اليوم 💕', m:'مصطفى مشتاق اليوم 💙', both:'كلاكما مشتاقان — الاشتياق يعني الحب 🌙'},
+  '😎': {h:'حلوم واثقة اليوم 👑', m:'مصطفى واثق اليوم 💪', both:'كلاكما واثقان — لا شيء يوقفكما 🌟'},
+  '🌸': {h:'حلوم رومانسية اليوم 🌹', m:'مصطفى رومانسي اليوم 💕', both:'كلاكما رومانسيان — الكون يحسدكما 💕✨'},
+};
+
+const FUTURE_LETTERS = [
+  'يا حلوم، أنا مصطفى بعد عشرين سنة. أكتب إليكِ وأنا أتذكر كل لحظة خفت فيها أن أخسركِ. الآن، وأنا أنظر إلى وجهكِ الذي لم يتغير في عيني، أعرف أن كل لحظة صعبة كانت تستحق. شكراً لأنكِ اخترتِ البقاء. شكراً لأنكِ كنتِ وطني حين لم يكن لي وطن. أحبكِ كما كنت، وأكثر مما كنت. 💕',
+  'حلوم الغالية، من ٢٠٤٥ أكتب إليكِ. ضحكتكِ لا تزال أجمل شيء في هذا الكون. ابنتنا تشبهكِ في عيونها وتشبهني في عنادها. كل يوم أستيقظ وأشكر الله أنكِ كنتِ الإجابة على كل سؤال في حياتي. لو رجعت الزمن، كنت سأختارك من اليوم الأول وبلا تردد. أنتِ ليست مجرد حب — أنتِ القصة كلها. ❤️',
+  'يا ملكة حلومستان، أكتب إليكِ من المستقبل البعيد. لا تزال حلومستان في قلبي — تلك المملكة التي بنيتها لكِ من الكلمات لا تزال تسكنني. اليوم وبعد كل هذه السنوات، أدرك أن أجمل ما فعلته في حياتي هو أنني أحببتكِ بصدق وبقيت. أنتِ علمتِني أن الحب ليس شعوراً فقط — بل هو قرار يُتخذ كل يوم. وأنا اخترتكِ كل يوم. 🌌',
+];
+
+const MIDNIGHT_MSGS = [
+  'يا حلوم، أنا مستيقظ والكون نائم، وأفكر فيكِ. هذه اللحظة التي لا يعرفها أحد — لحظة منتصف الليل — هي لكِ وحدكِ. أنتِ الفكرة التي لا تغادر، والاسم الذي يسكن الصمت. أحبكِ يا حلوم، بعمق لا يعرفه إلا الليل. 🌙',
+  'في هذه الساعة السرية، حين ينام الجميع، أنا أكتب لكِ. لأن قلبي لا ينام على فكرة فيكِ. أنتِ الشيء الوحيد الذي يجعل الليل جميلاً. نامي بأمان يا أجمل شيء في حياتي. ✨',
+  'بعد منتصف الليل — الوقت الذي لا يكذب فيه أحد — أقول لكِ: أنتِ كل شيء. كل نجمة في السماء تعرف اسمكِ. كل لحظة صمت تحمل صورتكِ. أحبكِ أكثر مما يعرف الليل. 🌟',
+];
+
+const WHO_AM_I = [
+  'أنا الوطن الذي يسكن قلبكِ حين يضيق العالم 🌍',
+  'أنا الصوت الذي يهدئ عاصفتكِ الداخلية 🌊',
+  'أنا الشخص الذي يرى جمالكِ حين لا تريه أنتِ 🪞',
+  'أنا الحضن الذي يسع كل دموعكِ وكل ضحكاتكِ 🫂',
+  'أنا الكلمة التي تبحثين عنها حين تعجز الكلمات 💬',
+  'أنا الليل الذي يحفظ أسراركِ ولا يبوح بها 🌙',
+  'أنا الصبح الذي يأتي بعد أصعب لياليكِ ☀️',
+  'أنا الشاهد على أجمل نسخة منكِ التي لا يراها أحد 👁️',
+  'أنا القرار الذي لن أندم عليه حتى آخر نبضة 💓',
+  'أنا الشخص الذي اختار أن يحبكِ كل يوم من جديد 🌹',
+];
+
+/* ===== CANVAS STARS ===== */
+const canvas = document.getElementById('bg');
+const ctx = canvas.getContext('2d');
+let W, H, stars = [], shootingStars = [];
+
+function resize() {
+  W = canvas.width = window.innerWidth;
+  H = canvas.height = window.innerHeight;
+}
+resize();
+window.addEventListener('resize', resize);
+
+function initStars() {
+  stars = [];
+  for(let i = 0; i < 200; i++) {
+    stars.push({
+      x: Math.random() * W, y: Math.random() * H,
+      r: Math.random() * 1.5 + 0.3,
+      a: Math.random(), da: (Math.random() - 0.5) * 0.008,
+      speed: Math.random() * 0.15 + 0.05
+    });
+  }
+}
+initStars();
+
+function spawnShootingStar() {
+  shootingStars.push({
+    x: Math.random() * W, y: Math.random() * H * 0.5,
+    vx: -(Math.random() * 4 + 3), vy: Math.random() * 2 + 1,
+    len: Math.random() * 80 + 40, a: 1, tail: []
+  });
+}
+
+setInterval(spawnShootingStar, 3000);
+
+function drawBg() {
+  ctx.fillStyle = '#00000f';
+  ctx.fillRect(0, 0, W, H);
+  // Static stars
+  stars.forEach(s => {
+    s.a += s.da;
+    if(s.a <= 0 || s.a >= 1) s.da *= -1;
+    s.y -= s.speed;
+    if(s.y < 0) { s.y = H; s.x = Math.random() * W; }
+    ctx.beginPath();
+    ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2);
+    ctx.fillStyle = `rgba(255,245,230,${s.a})`;
+    ctx.fill();
+  });
+  // Shooting stars
+  shootingStars = shootingStars.filter(ss => ss.a > 0);
+  shootingStars.forEach(ss => {
+    ss.x += ss.vx; ss.y += ss.vy; ss.a -= 0.015;
+    const grad = ctx.createLinearGradient(ss.x, ss.y, ss.x - ss.vx * 10, ss.y - ss.vy * 10);
+    grad.addColorStop(0, `rgba(255,220,180,${ss.a})`);
+    grad.addColorStop(1, 'rgba(255,220,180,0)');
+    ctx.beginPath();
+    ctx.moveTo(ss.x, ss.y);
+    ctx.lineTo(ss.x - ss.vx * 10, ss.y - ss.vy * 10);
+    ctx.strokeStyle = grad;
+    ctx.lineWidth = 1.5;
+    ctx.stroke();
+  });
+  requestAnimationFrame(drawBg);
+}
+drawBg();
+
+/* ===== ENTER ===== */
+function enter() {
+  document.getElementById('intro').classList.remove('active');
+  document.getElementById('app').classList.add('active');
+  document.getElementById('ndots').style.display = 'flex';
+  init();
+  requestNotifPermission();
+  checkMidnight();
+}
+
+/* ===== COUNTER ===== */
+function updateCounter() {
+  const now = new Date();
+  const diff = now - START;
+  const totalDays = Math.floor(diff / 86400000);
+  const years = Math.floor(totalDays / 365);
+  const months = Math.floor((totalDays % 365) / 30);
+  const days = totalDays % 30;
+  const hours = now.getHours();
+  document.getElementById('cY').textContent = years;
+  document.getElementById('cM').textContent = months;
+  document.getElementById('cD').textContent = days;
+  document.getElementById('cH').textContent = hours;
+}
+setInterval(updateCounter, 60000);
+
+/* ===== TIME MSG ===== */
+function buildTimeMsg() {
+  const h = new Date().getHours();
+  let e, g, p, cls;
+  if(h >= 5 && h < 12) {
+    e='🌅'; g='صباح الحب يا حلوم'; cls='morning';
+    p='الصباح بدونكِ ناقص — لكن فكرتكِ تملأ كل فراغ. صباحكِ أجمل من الشمس.';
+  } else if(h >= 12 && h < 17) {
+    e='☀️'; g='وسط النهار وأنتِ في بالي'; cls='morning';
+    p='في هذه اللحظة، بين ضجيج النهار وهدوئه، أفكر فيكِ. أنتِ الهدوء الذي أبحث عنه.';
+  } else if(h >= 17 && h < 21) {
+    e='🌆'; g='مساء الأحلام يا حلوم'; cls='evening';
+    p='المساء يذكرني بكِ — بضحكتكِ وعيونكِ وكل التفاصيل الصغيرة التي تجعلكِ أنتِ.';
+  } else {
+    e='🌙'; g='الليل والنجوم تحمل اسمكِ'; cls='night';
+    p='في هذا الصمت الليلي، أنتِ الفكرة التي لا تغادر. نامي بأمان يا أجمل شيء في حياتي.';
+  }
+  document.getElementById('te').textContent = e;
+  document.getElementById('tg').textContent = g;
+  document.getElementById('tg').className = 't-g ' + cls;
+  document.getElementById('tp').textContent = p;
+  document.getElementById('tic').textContent = e;
+}
+
+/* ===== STARS GRID ===== */
+function buildStars() {
+  const g = document.getElementById('sgrid');
+  g.innerHTML = '';
+  YD.forEach((y, i) => {
+    const b = document.createElement('button');
+    b.className = 'sbtn';
+    b.id = 'sb' + i;
+    b.innerHTML = `<span class="se">${y.e}</span><span class="sy">${y.y}</span>`;
+    b.onclick = () => toggleStar(i);
+    g.appendChild(b);
+  });
+  const pop3 = document.createElement('div');
+  pop3.className = 'spop'; pop3.id = 'sp3'; g.appendChild(pop3);
+  const pop7 = document.createElement('div');
+  pop7.className = 'spop'; pop7.id = 'sp7'; g.appendChild(pop7);
+}
+
+/* ===== GARDEN ===== */
+let currentMood = 'all';
+function buildGarden() {
+  const g = document.getElementById('ggrid');
+  g.innerHTML = '';
+  const items = currentMood === 'all' ? GARDEN_ITEMS : GARDEN_ITEMS.filter(it => it.mood === currentMood || it.mood === 'all');
+  items.forEach((f, i) => {
+    const b = document.createElement('button');
+    b.className = 'fbtn';
+    b.innerHTML = `<span class="fe">${f.e}</span><span class="fn">${f.n}</span>`;
+    b.onclick = () => openMem(f);
+    g.appendChild(b);
+  });
+}
+function setMood(mood, el) {
+  currentMood = mood;
+  document.querySelectorAll('.mood-tab').forEach(t => t.classList.remove('on'));
+  el.classList.add('on');
+  buildGarden();
+}
+
+/* ===== MEM OVERLAY ===== */
+async function openMem(f) {
+  document.getElementById('me').textContent = f.e;
+  document.getElementById('mt').textContent = f.n;
+  document.getElementById('mp').textContent = f.m;
+  const aiEl = document.getElementById('mai');
+  aiEl.classList.remove('show');
+  aiEl.textContent = '';
+  document.getElementById('mov').classList.add('show');
+  // جلب رسالة AI ديناميكية
+  try {
+    const t = await askAI(f.ai, 80);
+    if(t && t.length > 10) {
+      aiEl.textContent = '✨ ' + t;
+      aiEl.classList.add('show');
+    }
+  } catch(e) {}
+}
+function closeMem() { document.getElementById('mov').classList.remove('show'); }
+document.getElementById('mov').addEventListener('click', function(e) { if(e.target === this) closeMem(); });
+
+/* ===== WHO AM I ===== */
+let whoIdx = 0;
+async function whoAmI() {
+  const res = document.getElementById('whoRes');
+  res.classList.remove('show');
+  res.textContent = '🔮 جاري الاكتشاف...';
+  res.classList.add('show');
+  try {
+    const prompt = 'أنت مصطفى تتحدث لحلوم. أجب بجملة واحدة شاعرية تصف من أنت في حياتها. لا تبدأ بـ "أنا" مباشرة، كن إبداعياً. بالعربية فقط.';
+    const t = await askAI(prompt, 80);
+    if(t && t.length > 10) {
+      res.textContent = t;
+    } else {
+      res.textContent = WHO_AM_I[whoIdx % WHO_AM_I.length];
+      whoIdx++;
+    }
+  } catch(e) {
+    res.textContent = WHO_AM_I[whoIdx % WHO_AM_I.length];
+    whoIdx++;
+  }
+  burst(document.querySelector('.who-btn'));
+}
+
+/* ===== MOON PROMISES ===== */
+let prOpen = false;
+function togglePr() {
+  prOpen = !prOpen;
+  document.getElementById('prlist').classList.toggle('show', prOpen);
+  if(prOpen) burst(document.querySelector('.moon-o'));
+}
+
+/* ===== WISH ===== */
+let wishIdx = 0;
+async function makeWish() {
+  const r = document.getElementById('wres');
+  r.classList.remove('show');
+  // عرض النتيجة فوراً
+  r.textContent = WS[wishIdx % WS.length];
+  wishIdx++;
+  r.classList.add('show');
+  burst(document.querySelector('.wish-orb'));
+  // محاولة AI في الخلفية
+  try {
+    const prompt = 'اكتب رسالة قصيرة جداً (جملة واحدة أو جملتين) من "الكون" لفتاة اسمها حلوم، تخبرها أن أمنيتها ستتحقق. الأسلوب: شاعري، غامض، رومانسي. بالعربية فقط.';
+    const t = await askAI(prompt, 80);
+    if(t && t.length > 10) r.textContent = t;
+  } catch(e) {}
+}
+
+/* ===== DICT ===== */
+async function doDict() {
+  const raw = document.getElementById('din').value.trim();
+  if(!raw) return;
+  document.getElementById('dorig').textContent = '❝ ' + raw + ' ❞';
+  document.getElementById('dtrans').textContent = '🔮 جاري الترجمة...';
+  document.getElementById('dmean').textContent = '';
+  document.getElementById('dres').classList.add('show');
+  try {
+    const {a, b} = await hybridReply(raw);
+    document.getElementById('dtrans').textContent = a;
+    document.getElementById('dmean').textContent = b;
+    burst(document.getElementById('din'));
+  } catch(e) {
+    document.getElementById('dtrans').textContent = 'كلمتكِ ترجمتها الحب ❤️';
+    document.getElementById('dmean').textContent = 'كل كلمة تقولينها تحمل معنى أعمق مما تعرفين.';
+  }
+}
+document.getElementById('din').addEventListener('keydown', e => { if(e.key === 'Enter') doDict(); });
+
+/* ===== OATH ===== */
+function toggleOath(id) {
+  const el = document.getElementById('oath-' + id);
+  el.classList.toggle('show');
+}
+
+/* ===== FUTURE LETTER ===== */
+let futureIdx = 0;
+async function getFutureLetter() {
+  const btn = document.getElementById('future-btn');
+  const res = document.getElementById('future-res');
+  const txt = document.getElementById('future-txt');
+  btn.textContent = '⏳ جاري الإرسال...';
+  btn.disabled = true;
+  try {
+    const prompt = 'أنت مصطفى بعد ٢٠ سنة تكتب رسالة لحلوم. اكتب رسالة (٦-٨ أسطر) شاعرية عميقة مؤثرة. اذكر أنهم معاً منذ ٢٠١٨. اذكر عيونها البنية وضحكتها وشعرها. بالعربية فقط، بدون مقدمات.';
+    const t = await askAI(prompt, 250);
+    if(t && t.length > 30) {
+      txt.textContent = t;
+    } else {
+      txt.textContent = FUTURE_LETTERS[futureIdx % FUTURE_LETTERS.length];
+      futureIdx++;
+    }
+  } catch(e) {
+    txt.textContent = FUTURE_LETTERS[futureIdx % FUTURE_LETTERS.length];
+    futureIdx++;
+  }
+  res.style.display = 'block';
+  btn.textContent = '✉️ رسالة أخرى';
+  btn.disabled = false;
+  burst(btn);
+}
+
+/* ===== ALARM 23:59 ===== */
+let alarmSentToday = localStorage.getItem('alarmDate') || '';
+function checkAlarm() {
+  const now = new Date();
+  const today = now.toDateString();
+  if(now.getHours() === 23 && now.getMinutes() === 59 && alarmSentToday !== today) {
+    alarmSentToday = today;
+    localStorage.setItem('alarmDate', today);
+    if(Notification.permission === 'granted') {
+      new Notification('💕 بحبك يا حلوم', {
+        body: 'مصطفى يقول بحبك في آخر دقيقة من اليوم 🌙',
+        icon: 'data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><text y=".9em" font-size="90">💕</text></svg>'
+      });
+    }
+    sendPingWs({type:'alarm', msg:'بحبك يا حلوم 💕 — آخر دقيقة من اليوم'});
+  }
+}
+setInterval(checkAlarm, 30000);
+
+/* ===== MIDNIGHT MESSAGE ===== */
+let midnightShownToday = localStorage.getItem('midnightDate') || '';
+function checkMidnight() {
+  const now = new Date();
+  const h = now.getHours();
+  const today = now.toDateString();
+  if((h >= 0 && h < 4) && midnightShownToday !== today) {
+    midnightShownToday = today;
+    localStorage.setItem('midnightDate', today);
+    const idx = Math.floor(Math.random() * MIDNIGHT_MSGS.length);
+    document.getElementById('midnightMsg').textContent = MIDNIGHT_MSGS[idx];
+    setTimeout(() => {
+      document.getElementById('midnightOverlay').classList.add('show');
+    }, 2000);
+  }
+}
+function closeMidnight() {
+  document.getElementById('midnightOverlay').classList.remove('show');
+}
+setInterval(checkMidnight, 60000);
+
+/* ===== PLANET BURST ===== */
+function planetBurst(el) {
+  burst(el);
+  el.style.transform = 'scale(1.2)';
+  setTimeout(() => { el.style.transform = ''; }, 300);
+}
+
+/* ===== WEBSOCKET ===== */
+let ws = null;
+let wsReconnectTimer = null;
+function connectWs() {
+  try {
+    ws = new WebSocket('wss://halom-server-production.up.railway.app');
+    ws.onopen = () => { console.log('WS connected'); };
+    ws.onmessage = (e) => {
+      try {
+        const d = JSON.parse(e.data);
+        handleWsMsg(d);
+      } catch(err) {}
+    };
+    ws.onclose = () => {
+      ws = null;
+      wsReconnectTimer = setTimeout(connectWs, 5000);
+    };
+    ws.onerror = () => { ws = null; };
+  } catch(e) {}
+}
+connectWs();
+
+function handleWsMsg(d) {
+  if(d.type === 'ping') {
+    showIncomingPing(d.pingType || 'hug');
+  } else if(d.type === 'alarm') {
+    if(Notification.permission === 'granted') {
+      new Notification('💕 ' + (d.msg || 'رسالة من مصطفى'), { body: d.msg || '' });
+    }
+  } else if(d.type === 'heartbeat') {
+    showHeartBeat();
+  } else if(d.type === 'daily_msg') {
+    loadDailyMsgs();
+  }
+}
+
+function sendPingWs(data) {
+  if(ws && ws.readyState === WebSocket.OPEN) {
+    ws.send(JSON.stringify(data));
+    return true;
+  }
+  return false;
+}
+
+/* ===== PING ===== */
+async function sendPing(type) {
+  const statusEl = document.getElementById('ping-status');
+  const icons = {hug:'🫂', miss:'💜', heart:'💓', want:'🔥'};
+  const msgs = {hug:'عناق دافئ في طريقه إليها 🫂', miss:'اشتياقك وصل إلى قلبها 💜', heart:'نبضة قلبك وصلت 💓', want:'أريدكِ وصلت 🔥'};
+  statusEl.textContent = '⏳ جاري الإرسال...';
+  const sent = sendPingWs({type:'ping', pingType: type});
+  if(sent) {
+    statusEl.textContent = '✅ ' + msgs[type];
+  } else {
+    statusEl.textContent = '📡 ' + msgs[type] + ' (سيصل عند الاتصال)';
+  }
+  burst(document.querySelector('.ping-box'));
+  setTimeout(() => { statusEl.textContent = ''; }, 4000);
+}
+
+async function sendHeartBeat() {
+  const statusEl = document.getElementById('ping-status');
+  statusEl.textContent = '⏳ جاري الإرسال...';
+  showHeartBeat();
+  const sent = sendPingWs({type:'heartbeat'});
+  statusEl.textContent = sent ? '💓 نبضة قلبك وصلت إليها!' : '💓 نبضة القلب أُرسلت (سيصل عند الاتصال)';
+  setTimeout(() => { statusEl.textContent = ''; }, 4000);
+}
+
+function showHeartBeat() {
+  for(let i = 0; i < 8; i++) {
+    setTimeout(() => {
+      const h = document.createElement('div');
+      h.className = 'hpop';
+      h.textContent = '💓';
+      h.style.left = (Math.random() * 80 + 10) + 'vw';
+      h.style.top = (Math.random() * 60 + 20) + 'vh';
+      document.body.appendChild(h);
+      setTimeout(() => h.remove(), 1800);
+    }, i * 150);
+  }
+}
+
+function showIncomingPing(type) {
+  const icons = {hug:'🫂', miss:'💜', heart:'💓', want:'🔥'};
+  const titles = {hug:'عناق من مصطفى 💕', miss:'مصطفى يشتاق لكِ 💜', heart:'نبضة قلب من مصطفى 💓', want:'مصطفى يريدكِ 🔥'};
+  const msgs = {hug:'أرسل لكِ عناقاً دافئاً يملأ قلبكِ 🫂', miss:'قلبه يشتاق إليكِ في هذه اللحظة 💜', heart:'قلبه ينبض بحبكِ الآن 💓', want:'يريدكِ... فقط أنتِ 🔥💕'};
+  document.getElementById('ping-card-icon').textContent = icons[type] || '💕';
+  document.getElementById('ping-card-title').textContent = titles[type] || 'رسالة من مصطفى';
+  document.getElementById('ping-card-msg').textContent = msgs[type] || '';
+  document.getElementById('ping-incoming').classList.add('show');
+  document.getElementById('ping-incoming').style.animation = 'shake 0.5s ease';
+  setTimeout(() => { document.getElementById('ping-incoming').style.animation = ''; }, 500);
+}
+function closePing() { document.getElementById('ping-incoming').classList.remove('show'); }
+
+/* ===== LOVE COUNTER ===== */
+function initLoveCounter() {
+  const count = parseInt(localStorage.getItem('loveCount') || '0');
+  document.getElementById('loveCount').textContent = count.toLocaleString('ar');
+}
+function addLove() {
+  let count = parseInt(localStorage.getItem('loveCount') || '0') + 1;
+  localStorage.setItem('loveCount', count);
+  document.getElementById('loveCount').textContent = count.toLocaleString('ar');
+  const btn = document.getElementById('loveBtnEl');
+  btn.classList.remove('pop');
+  void btn.offsetWidth;
+  btn.classList.add('pop');
+  burst(btn);
+  for(let i = 0; i < 5; i++) {
+    setTimeout(() => {
+      const h = document.createElement('div');
+      h.className = 'hpop';
+      h.textContent = ['❤️','💕','💗','💓','💖'][Math.floor(Math.random()*5)];
+      h.style.left = (Math.random() * 60 + 20) + 'vw';
+      h.style.top = '60vh';
+      document.body.appendChild(h);
+      setTimeout(() => h.remove(), 1800);
+    }, i * 100);
+  }
+}
+
+/* ===== ROSE GARDEN ===== */
+const ROSE_TYPES = ['🌹','🌸','🌺','🌷','🌻','💐','🌼','🏵️'];
+function initRoseGarden() {
+  const roses = JSON.parse(localStorage.getItem('roseGarden') || '[]');
+  const field = document.getElementById('roseField');
+  field.innerHTML = '';
+  roses.forEach(r => {
+    const span = document.createElement('span');
+    span.className = 'rose-item';
+    span.textContent = r;
+    field.appendChild(span);
+  });
+  updateRoseCount(roses.length);
+}
+function plantRose() {
+  const roses = JSON.parse(localStorage.getItem('roseGarden') || '[]');
+  const newRose = ROSE_TYPES[Math.floor(Math.random() * ROSE_TYPES.length)];
+  roses.push(newRose);
+  localStorage.setItem('roseGarden', JSON.stringify(roses));
+  const field = document.getElementById('roseField');
+  const span = document.createElement('span');
+  span.className = 'rose-item';
+  span.textContent = newRose;
+  field.appendChild(span);
+  updateRoseCount(roses.length);
+  burst(document.querySelector('.rose-garden-btn'));
+}
+function updateRoseCount(n) {
+  const el = document.getElementById('roseCount');
+  if(n === 0) el.textContent = 'الحديقة فارغة... ابدئي بأول وردة 🌱';
+  else el.textContent = `في حديقتنا ${n.toLocaleString('ar')} وردة 🌹`;
+}
+
+/* ===== ORACLE ===== */
+const ORACLE_FALLBACK = [
+  'الكون يقول: ما تبحثين عنه يبحث عنكِ أيضاً 🌌',
+  'النجوم تهمس: الإجابة في قلبكِ قبل أن تسألي 💫',
+  'الفضاء يجيب: كل شيء جميل يأخذ وقته ✨',
+  'القمر يقول: ثقي بما يشعر به قلبكِ 🌙',
+  'الكون يبتسم: أنتِ أقرب مما تظنين 🌟',
+  'الكون يهمس: الحب الحقيقي لا يضيع، يتأخر فقط 💕',
+  'النجوم تغني: الوقت الصحيح آتٍ، صبري قليلاً 🌠',
+];
+let oracleIdx = 0;
+let oracleBusy = false;
+async function askOracle() {
+  if(oracleBusy) return;
+  oracleBusy = true;
+  const ball = document.getElementById('oracleBall');
+  const loading = document.getElementById('oracleLoading');
+  const res = document.getElementById('oracleRes');
+  ball.style.transform = 'scale(0.9)';
+  setTimeout(() => { ball.style.transform = ''; }, 200);
+  res.classList.remove('show');
+  loading.classList.add('show');
+  
+  // عرض النتيجة فوراً من البيانات المحلية (بدون انتظار AI)
+  setTimeout(() => {
+    loading.classList.remove('show');
+    res.textContent = ORACLE_FALLBACK[oracleIdx % ORACLE_FALLBACK.length];
+    oracleIdx++;
+    res.classList.add('show');
+    burst(ball);
+    oracleBusy = false;
+  }, 800);
+  
+  // محاولة AI في الخلفية لتحديث النتيجة إذا نجحت
+  try {
+    const prompt = 'أنت "الكون" يتحدث لفتاة اسمها حلوم. أجب بجملة واحدة أو جملتين شاعريتين غامضتين رومانسيتين. لا تكرر نفس الجواب. كن إبداعياً. بالعربية فقط.';
+    const t = await askAI(prompt, 80);
+    if(t && t.length > 10 && !oracleBusy) {
+      res.textContent = t;
+    }
+  } catch(e) {}
+}
+
+/* ===== MASK ===== */
+let maskHalima = null, maskMustafa = null;
+function initMask() {
+  ['maskHalimaEmojis','maskMustafaEmojis'].forEach((id, pi) => {
+    const cont = document.getElementById(id);
+    cont.innerHTML = '';
+    MASK_EMOJIS.forEach(em => {
+      const btn = document.createElement('button');
+      btn.className = 'mask-emoji-btn';
+      btn.textContent = em;
+      btn.onclick = () => selectMaskEmoji(pi === 0 ? 'halima' : 'mustafa', em, btn);
+      cont.appendChild(btn);
+    });
+  });
+}
+function selectMaskEmoji(who, emoji, btn) {
+  const cont = document.getElementById(who === 'halima' ? 'maskHalimaEmojis' : 'maskMustafaEmojis');
+  cont.querySelectorAll('.mask-emoji-btn').forEach(b => b.classList.remove('selected'));
+  btn.classList.add('selected');
+  if(who === 'halima') maskHalima = emoji;
+  else maskMustafa = emoji;
+  showMaskResult();
+}
+function showMaskResult() {
+  if(!maskHalima && !maskMustafa) return;
+  const res = document.getElementById('maskResult');
+  const aiBtn = document.getElementById('maskAiBtn');
+  res.innerHTML = '';
+  if(maskHalima) {
+    const row = document.createElement('div');
+    row.className = 'mask-result-row';
+    const moodH = MASK_MOODS[maskHalima] || maskHalima;
+    const resp = MASK_RESPONSES[maskHalima] || {};
+    row.innerHTML = `<div class="mask-result-who halima">🌸 حلوم</div><div class="mask-result-msg">${resp.h || 'حلوم تشعر بـ ' + moodH + ' اليوم 💕'}</div>`;
+    res.appendChild(row);
+  }
+  if(maskMustafa) {
+    const row = document.createElement('div');
+    row.className = 'mask-result-row';
+    const moodM = MASK_MOODS[maskMustafa] || maskMustafa;
+    const resp = MASK_RESPONSES[maskMustafa] || {};
+    row.innerHTML = `<div class="mask-result-who mustafa">💙 مصطفى</div><div class="mask-result-msg">${resp.m || 'مصطفى يشعر بـ ' + moodM + ' اليوم 💙'}</div>`;
+    res.appendChild(row);
+  }
+  if(maskHalima && maskMustafa) {
+    // عرض رسالة مشتركة دائماً
+    const respH = MASK_RESPONSES[maskHalima] || {};
+    const bothMsg = (maskHalima === maskMustafa && respH.both)
+      ? respH.both
+      : `كلاكما معاً والكون يحتفظ بمشاعركما 💕✨`;
+    const row = document.createElement('div');
+    row.className = 'mask-result-row';
+    row.innerHTML = `<div class="mask-result-who" style="color:var(--gold)">✨ معاً</div><div class="mask-result-msg">${bothMsg}</div>`;
+    res.appendChild(row);
+    aiBtn.style.display = 'block';
+  }
+  res.classList.add('show');
+  document.getElementById('maskAiRes').classList.remove('show');
+  burst(res);
+}
+async function getMaskAI() {
+  if(!maskHalima || !maskMustafa) return;
+  const aiRes = document.getElementById('maskAiRes');
+  const aiBtn = document.getElementById('maskAiBtn');
+  aiBtn.textContent = '⏳ جاري التوليد...';
+  aiBtn.disabled = true;
+  const moodH = MASK_MOODS[maskHalima] || maskHalima;
+  const moodM = MASK_MOODS[maskMustafa] || maskMustafa;
+  const prompt = `حلوم تشعر بـ "${moodH}" ومصطفى يشعر بـ "${moodM}" اليوم. اكتب رسالة شاعرية قصيرة (٣-٤ أسطر) مناسبة لهذا المزيج من المشاعر. الأسلوب: رومانسي، دافئ، يخاطب كليهما. بالعربية فقط.`;
+  try {
+    const t = await askAI(prompt, 150);
+    if(t && t.length > 10) {
+      aiRes.textContent = t;
+      aiRes.classList.add('show');
+    }
+  } catch(e) {}
+  aiBtn.textContent = '✨ رسالة ذكاء اصطناعي مخصصة';
+  aiBtn.disabled = false;
+}
+
+/* ===== DAILY MESSAGES ===== */
+let dailyWho = null;
+function switchDailyTab(tab, el) {
+  document.querySelectorAll('.daily-msg-tab').forEach(t => t.classList.remove('on'));
+  el.classList.add('on');
+  const writeEl = document.getElementById('dailyWrite');
+  const readEl = document.getElementById('dailyRead');
+  if(tab === 'write') {
+    writeEl.classList.add('show');
+    readEl.classList.remove('show');
+  } else {
+    writeEl.classList.remove('show');
+    readEl.classList.add('show');
+    loadDailyMsgs();
+  }
+}
+function setDailyWho(who) {
+  dailyWho = who;
+  document.getElementById('dmWhoH').className = 'daily-who-btn' + (who === 'halima' ? ' on' : '');
+  document.getElementById('dmWhoM').className = 'daily-who-btn' + (who === 'mustafa' ? ' on-blue' : '');
+}
+async function sendDailyMsg() {
+  if(!dailyWho) {
+    const statusEl = document.getElementById('dailyStatus');
+    statusEl.textContent = '⚠️ اختر اسمك أولاً';
+    setTimeout(() => { statusEl.textContent = ''; }, 2000);
+    return;
+  }
+  const text = document.getElementById('dailyMsgText').value.trim();
+  if(!text) {
+    const statusEl = document.getElementById('dailyStatus');
+    statusEl.textContent = '⚠️ اكتب رسالة أولاً';
+    setTimeout(() => { statusEl.textContent = ''; }, 2000);
+    return;
+  }
+  const statusEl = document.getElementById('dailyStatus');
+  statusEl.textContent = '⏳ جاري الحفظ...';
+  const now = new Date();
+  const msg = {
+    who: dailyWho,
+    text: text,
+    date: now.toLocaleDateString('ar-SA', {year:'numeric', month:'long', day:'numeric'})
+  };
+  // حفظ محلي دائماً
+  const msgs = JSON.parse(localStorage.getItem('dailyMsgs') || '[]');
+  msgs.unshift(msg);
+  if(msgs.length > 100) msgs.splice(100);
+  localStorage.setItem('dailyMsgs', JSON.stringify(msgs));
+  // إرسال للسيرفر (إذا متصل)
+  sendPingWs({type:'daily_msg', ...msg});
+  statusEl.textContent = '✅ تم حفظ رسالتك 💕';
+  document.getElementById('dailyMsgText').value = '';
+  burst(document.getElementById('dmWhoH'));
+  setTimeout(() => { statusEl.textContent = ''; loadDailyMsgs(); }, 1500);
+}
+function loadDailyMsgs() {
+  const msgs = JSON.parse(localStorage.getItem('dailyMsgs') || '[]');
+  const list = document.getElementById('dailyMsgList');
+  if(!list) return;
+  if(msgs.length === 0) {
+    list.innerHTML = '<div class="daily-msg-empty">لا توجد رسائل بعد... ابدأ بأول رسالة 💕</div>';
+    return;
+  }
+  list.innerHTML = msgs.map(m => `
+    <div class="daily-msg-card">
+      <div class="daily-msg-card-who ${m.who || 'halima'}">${(m.who === 'mustafa') ? '💙 مصطفى' : '🌸 حلوم'}<span class="daily-msg-card-date">${m.date || ''}</span></div>
+      <div class="daily-msg-card-text">${m.text || ''}</div>
+    </div>
+  `).join('');
+}
+
+/* ===== MIRROR ===== */
+async function doMirror() {
+  const raw = document.getElementById('mirrorIn').value.trim();
+  if(!raw) return;
+  document.getElementById('mirrorOrig').textContent = raw;
+  document.getElementById('mirrorTruth').textContent = '🪞 المرآة تكشف الحقيقة...';
+  document.getElementById('mirrorExplain').textContent = '';
+  document.getElementById('mirrorRes').classList.add('show');
+  const prompt = `أنت "مرآة الحقيقة" تتحدث لفتاة اسمها حلوم. كتبت: "${raw}".
+رد بسطرين:
+1) الحقيقة الجميلة المعاكسة (جملة شاعرية قصيرة)
+2) شرح لماذا هي مخطئة في نظرتها السلبية (جملة واحدة)
+بالعربية فقط.`;
+  try {
+    const t = await askAI(prompt, 120);
+    if(t && t.length > 10) {
+      const lines = t.split('\n').map(s => s.trim()).filter(Boolean);
+      document.getElementById('mirrorTruth').textContent = lines[0] || t;
+      document.getElementById('mirrorExplain').textContent = lines[1] || '';
+    } else {
+      document.getElementById('mirrorTruth').textContent = 'لا، أنتِ استثنائية بكل معنى الكلمة ✨';
+      document.getElementById('mirrorExplain').textContent = 'المرآة الحقيقية تعكس ما يراه من يحبكِ، لا ما تظنينه.';
+    }
+  } catch(e) {
+    document.getElementById('mirrorTruth').textContent = 'لا، أنتِ استثنائية بكل معنى الكلمة ✨';
+    document.getElementById('mirrorExplain').textContent = 'المرآة الحقيقية تعكس ما يراه من يحبكِ، لا ما تظنينه.';
+  }
+  burst(document.querySelector('.mirror-frame'));
+}
+document.getElementById('mirrorIn').addEventListener('keydown', e => { if(e.key === 'Enter') doMirror(); });
+
+/* ===== AI PHOTOS ===== */
+const AI_STYLE_KEYS = ['space','fantasy','anime','cinematic','beach','winter'];
+let lastAiStyleIdx = -1;
+function getNextAiStyle() {
+  let idx;
+  do { idx = Math.floor(Math.random() * AI_STYLE_KEYS.length); } while(idx === lastAiStyleIdx && AI_STYLE_KEYS.length > 1);
+  lastAiStyleIdx = idx;
+  return AI_STYLE_KEYS[idx];
+}
+let currentAiStyle = 'space';
+const AI_STYLES = {
+  space: 'romantic couple in outer space between stars and galaxies, cosmic nebula background, floating among stars, magical atmosphere',
+  fantasy: 'romantic couple in a magical crystal castle, fantasy kingdom, ethereal lighting, fairy tale scene, glowing magic',
+  anime: 'romantic anime couple, soft pastel colors, cherry blossoms falling, Studio Ghibli inspired, beautiful illustration',
+  cinematic: 'romantic couple cinematic scene, golden hour lighting, film photography style, bokeh background, dramatic lighting',
+  beach: 'romantic couple on a moonlit beach, ocean waves, night scene, stars reflecting on water, beautiful moon',
+  winter: 'romantic couple in snowy winter scene, warm cozy atmosphere, snowflakes, winter wonderland, warm light',
+};
+const AI_CAPTIONS = {
+  space: ['في الفضاء، بين المجرات، وجدنا بعضنا 🌌', 'الكون كله شاهد على حبنا ✨', 'نجوم الكون تحسدنا 💫'],
+  fantasy: ['في مملكة الأحلام، أنتِ ملكتي 🏰', 'حلومستان — المملكة التي بنيتها لكِ 💜', 'في عالم الخيال، أنتِ الحقيقة الوحيدة ✨'],
+  anime: ['قصة حبنا أجمل من كل الأنمي 🌸', 'في عالم الرسوم، قلبي يرسمكِ دائماً 💕', 'أنتِ بطلة قصتي الرومانسية 🌺'],
+  cinematic: ['لحظتنا تستحق أن تكون فيلماً 🎬', 'كل إطار معكِ لوحة فنية 💕', 'الكاميرا لا تستطيع تصوير كل جمالكِ ✨'],
+  beach: ['على شاطئ الأحلام، معكِ فقط 🌊', 'القمر والبحر شاهدان على حبنا 🌙', 'أمواج البحر تحمل اسمكِ 💙'],
+  winter: ['في الشتاء، أنتِ دفئي الوحيد ❄️', 'الثلج يبيض والحب يدفئ 💕', 'في برد الشتاء، قلبي يحترق بحبكِ 🔥'],
+};
+
+function setAiStyle(style, el) {
+  currentAiStyle = style;
+  document.querySelectorAll('.ai-style-tab').forEach(t => t.classList.remove('on'));
+  el.classList.add('on');
+}
+
+// مجموعة صور رومانسية جميلة من Picsum كـ fallback
+const ROMANTIC_FALLBACK_IMGS = {
+  space: [
+    'https://images.unsplash.com/photo-1534796636912-3b95b3ab5986?w=600&q=80',
+    'https://images.unsplash.com/photo-1462331940025-496dfbfc7564?w=600&q=80',
+    'https://images.unsplash.com/photo-1419242902214-272b3f66ee7a?w=600&q=80',
+  ],
+  fantasy: [
+    'https://images.unsplash.com/photo-1518709268805-4e9042af9f23?w=600&q=80',
+    'https://images.unsplash.com/photo-1504701954957-2010ec3bcec1?w=600&q=80',
+    'https://images.unsplash.com/photo-1470770841072-f978cf4d019e?w=600&q=80',
+  ],
+  anime: [
+    'https://images.unsplash.com/photo-1522748906645-95d8adfd52c7?w=600&q=80',
+    'https://images.unsplash.com/photo-1490750967868-88df5691cc04?w=600&q=80',
+    'https://images.unsplash.com/photo-1478145046317-39f10e56b5e9?w=600&q=80',
+  ],
+  cinematic: [
+    'https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?w=600&q=80',
+    'https://images.unsplash.com/photo-1474552226712-ac0f0961a954?w=600&q=80',
+    'https://images.unsplash.com/photo-1529634806980-85c3dd6d34ac?w=600&q=80',
+  ],
+  beach: [
+    'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=600&q=80',
+    'https://images.unsplash.com/photo-1504701954957-2010ec3bcec1?w=600&q=80',
+    'https://images.unsplash.com/photo-1519046904884-53103b34b206?w=600&q=80',
+  ],
+  winter: [
+    'https://images.unsplash.com/photo-1491002052546-bf38f186af56?w=600&q=80',
+    'https://images.unsplash.com/photo-1483921020237-2ff51e8e4b22?w=600&q=80',
+    'https://images.unsplash.com/photo-1517299321609-52687d1bc55a?w=600&q=80',
+  ],
+};
+
+function showFallbackImg(style, caption) {
+  const frame = document.getElementById('aiResultFrame');
+  const img = document.getElementById('aiResultImg');
+  const captionEl = document.getElementById('aiResultCaption');
+  const loading = document.getElementById('aiLoading');
+  const btn = document.getElementById('aiGenBtn');
+  const imgs = ROMANTIC_FALLBACK_IMGS[style] || ROMANTIC_FALLBACK_IMGS.space;
+  const url = imgs[Math.floor(Math.random() * imgs.length)];
+  img.onload = () => {
+    loading.classList.remove('show');
+    frame.classList.add('show');
+    captionEl.textContent = caption;
+    document.getElementById('aiSaveHint').style.display = 'block';
+    btn.disabled = false;
+    burst(btn);
+  };
+  img.onerror = () => {
+    loading.classList.remove('show');
+    // محاولة صورة بديلة من ستايل مختلف
+    const allImgs = Object.values(ROMANTIC_FALLBACK_IMGS).flat();
+    const fallback = allImgs[Math.floor(Math.random() * allImgs.length)];
+    img.onerror = () => { captionEl.textContent = caption; btn.disabled = false; };
+    img.src = fallback;
+    frame.classList.add('show');
+    captionEl.textContent = caption;
+    document.getElementById('aiSaveHint').style.display = 'block';
+    btn.disabled = false;
+  };
+  img.src = url;
+}
+
+async function generateAiPhoto() {
+  const btn = document.getElementById('aiGenBtn');
+  const loading = document.getElementById('aiLoading');
+  const frame = document.getElementById('aiResultFrame');
+  const img = document.getElementById('aiResultImg');
+  const caption = document.getElementById('aiResultCaption');
+  btn.disabled = true;
+  loading.classList.add('show');
+  frame.classList.remove('show');
+  caption.textContent = '';
+  document.getElementById('aiSaveHint').style.display = 'none';
+  
+  // اختيار ستايل عشوائي مختلف عن السابق
+  currentAiStyle = getNextAiStyle();
+  const styleDesc = AI_STYLES[currentAiStyle];
+  const prompt = `${styleDesc}, beautiful young Arab woman named Haloom with long dark brown wavy hair and warm brown eyes, handsome young Arab man named Mustafa with short curly black hair and gentle smile, romantic couple together, loving atmosphere, high quality digital art, detailed faces, warm romantic lighting, beautiful composition`;
+  const negPrompt = 'ugly, deformed, bad anatomy, blurry, low quality, nsfw, violence, extra limbs, bad hands';
+  
+  const seed = Math.floor(Math.random() * 999999);
+  const encodedPrompt = encodeURIComponent(prompt);
+  const encodedNeg = encodeURIComponent(negPrompt);
+  // Pollinations AI - مجاني وبدون مفاتيح
+  const imgUrl = `https://image.pollinations.ai/prompt/${encodedPrompt}?width=768&height=768&nologo=true&seed=${seed}&negative=${encodedNeg}&model=flux`;
+  
+  const caps = AI_CAPTIONS[currentAiStyle];
+  const selectedCaption = caps[Math.floor(Math.random() * caps.length)];
+  
+  // timeout: إذا لم تُحمّل الصورة خلال 12 ثانية، نعرض fallback فوراً
+  let timedOut = false;
+  const timeoutId = setTimeout(() => {
+    timedOut = true;
+    if(loading.classList.contains('show')) {
+      img.onload = null;
+      img.onerror = null;
+      img.src = '';
+      showFallbackImg(currentAiStyle, selectedCaption);
+    }
+  }, 12000);
+  
+  img.src = '';
+  img.onload = () => {
+    if(timedOut) return;
+    clearTimeout(timeoutId);
+    loading.classList.remove('show');
+    frame.classList.add('show');
+    caption.textContent = selectedCaption;
+    const sparkle = document.createElement('div');
+    sparkle.className = 'ai-result-sparkle';
+    frame.appendChild(sparkle);
+    setTimeout(() => sparkle.remove(), 1000);
+    document.getElementById('aiSaveHint').style.display = 'block';
+    burst(btn);
+    btn.disabled = false;
+  };
+  img.onerror = () => {
+    if(timedOut) return;
+    clearTimeout(timeoutId);
+    // محاولة ثانية بـ seed مختلف وحجم أصغر
+    const seed2 = Math.floor(Math.random() * 999999);
+    const imgUrl2 = `https://image.pollinations.ai/prompt/${encodedPrompt}?width=512&height=512&nologo=true&seed=${seed2}&model=flux`;
+    img.onerror = () => {
+      // fallback: صور رومانسية جميلة من Unsplash
+      showFallbackImg(currentAiStyle, selectedCaption);
+    };
+    img.src = imgUrl2;
+  };
+  img.src = imgUrl;
+}
+
+/* ===== BURST EFFECT ===== */
+function burst(el) {
+  if(!el) return;
+  const rect = el.getBoundingClientRect();
+  const cx = rect.left + rect.width / 2;
+  const cy = rect.top + rect.height / 2;
+  for(let i = 0; i < 8; i++) {
+    const p = document.createElement('div');
+    p.style.cssText = `position:fixed;left:${cx}px;top:${cy}px;pointer-events:none;z-index:999;font-size:${Math.random()*10+8}px;animation:hFly ${Math.random()*0.8+0.8}s ease-out forwards;transform-origin:center`;
+    p.textContent = ['✨','💫','⭐','🌟','💕','🌸'][Math.floor(Math.random()*6)];
+    const angle = (i / 8) * Math.PI * 2;
+    const dist = Math.random() * 60 + 30;
+    p.style.setProperty('--tx', Math.cos(angle) * dist + 'px');
+    p.style.setProperty('--ty', Math.sin(angle) * dist + 'px');
+    document.body.appendChild(p);
+    setTimeout(() => p.remove(), 1600);
+  }
+}
+
+/* ===== NOTIFICATIONS ===== */
+function requestNotifPermission() {
+  if('Notification' in window && Notification.permission === 'default') {
+    Notification.requestPermission();
+  }
+}
+
+/* ===== INIT ===== */
+function init() {
+  updateCounter();
+  buildTimeMsg();
+  buildStars();
+  buildGarden();
+  const pl = document.getElementById('prlist');
+  PR.forEach(p => {
+    const d = document.createElement('div');
+    d.className = 'pr-row';
+    d.innerHTML = `<span class="pr-ic">${p.i}</span><span>${p.t}</span>`;
+    pl.appendChild(d);
+  });
+  const jt = document.getElementById('jtrack');
+  JD.forEach(j => {
+    const d = document.createElement('div');
+    d.className = 'j-item';
+    d.innerHTML = `<div class="j-dot"></div><div class="j-box"><div class="j-yr">${j.y}</div><div class="j-tx">${j.t}</div></div>`;
+    jt.appendChild(d);
+  });
+  initLoveCounter();
+  initRoseGarden();
+  initMask();
+}
+
+/* ===== STAR TOGGLE ===== */
+let openStar = null;
+function toggleStar(i) {
+  const gid = i <= 3 ? 'sp3' : 'sp7';
+  const pop = document.getElementById(gid);
+  const btn = document.getElementById('sb' + i);
+  if(openStar === i) {
+    pop.classList.remove('show');
+    btn.classList.remove('lit');
+    openStar = null;
+    return;
+  }
+  document.querySelectorAll('.spop').forEach(p => p.classList.remove('show'));
+  document.querySelectorAll('.sbtn').forEach(b => b.classList.remove('lit'));
+  pop.textContent = YD[i].m;
+  pop.classList.add('show');
+  btn.classList.add('lit');
+  openStar = i;
+  burst(btn);
+}
+
+/* ===== NAV DOTS ===== */
+const sections = ['s0','s1','s2','s3','s4','s5','s6','s7','s8','s9','s10','s11','s12','s13','s14','s15','s16','s17','s18'];
+const appEl = document.getElementById('app');
+const dots = document.querySelectorAll('.ndot');
+appEl.addEventListener('scroll', () => {
+  const scrollTop = appEl.scrollTop;
+  let current = 0;
+  sections.forEach((id, i) => {
+    const el = document.getElementById(id);
+    if(el && el.offsetTop - 100 <= scrollTop) current = i;
+  });
+  dots.forEach((d, i) => d.classList.toggle('on', i === current));
+});
+dots.forEach((d, i) => {
+  d.addEventListener('click', () => {
+    const el = document.getElementById(sections[i]);
+    if(el) el.scrollIntoView({behavior:'smooth'});
+  });
+});
+</script>
+</body>
+</html>
