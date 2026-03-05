@@ -354,6 +354,21 @@ html,body{width:100%;height:100%;overflow:hidden;background:var(--void);font-fam
 .ai-loading-bar{width:100%;height:3px;background:rgba(245,200,66,0.1);border-radius:3px;margin-top:0.7rem;overflow:hidden}
 .ai-loading-bar::after{content:'';display:block;height:100%;width:30%;background:linear-gradient(90deg,transparent,var(--gold),transparent);animation:loadingSlide 1.5s ease-in-out infinite}
 @keyframes loadingSlide{0%{transform:translateX(-100%)}100%{transform:translateX(400%)}}
+
+/* همسة يومنا */
+.whisper-box{background:linear-gradient(135deg,rgba(255,92,138,0.07),rgba(176,106,255,0.05));border:1px solid rgba(255,92,138,0.2);border-radius:24px;padding:2rem 1.5rem;text-align:center;position:relative;overflow:hidden}
+.whisper-hearts{position:absolute;inset:0;pointer-events:none;overflow:hidden}
+.whisper-heart{position:absolute;font-size:1rem;animation:floatHeart linear infinite;opacity:0}
+@keyframes floatHeart{0%{transform:translateY(100%) scale(0.5);opacity:0}20%{opacity:0.6}80%{opacity:0.3}100%{transform:translateY(-120%) scale(1.2) rotate(20deg);opacity:0}}
+.whisper-icon{font-size:2.5rem;margin-bottom:1rem;display:block;animation:whisperPulse 3s ease-in-out infinite}
+@keyframes whisperPulse{0%,100%{transform:scale(1)}50%{transform:scale(1.15)}}
+.whisper-text{font-family:'Amiri',serif;font-size:1.15rem;line-height:2;color:var(--cream);min-height:4rem;padding:0.5rem 0.5rem;direction:rtl;position:relative;z-index:1;text-align:center}
+.whisper-date{font-size:0.72rem;color:#605080;margin:0.8rem 0 1.5rem;letter-spacing:0.1em}
+.whisper-btn{background:linear-gradient(135deg,rgba(255,92,138,0.15),rgba(176,106,255,0.1));border:1px solid rgba(255,92,138,0.3);color:var(--rose);font-family:'Amiri',serif;font-size:1rem;padding:0.8rem 2.2rem;border-radius:50px;cursor:pointer;transition:all 0.3s;position:relative;z-index:1}
+.whisper-btn:hover{transform:scale(1.05);box-shadow:0 0 30px rgba(255,92,138,0.3);border-color:rgba(255,92,138,0.6)}
+.whisper-btn:disabled{opacity:0.5;cursor:not-allowed;transform:none}
+.whisper-loading{display:none;font-size:0.85rem;color:#a090b8;margin-top:0.8rem;animation:pulse 1.5s ease-in-out infinite}
+.whisper-loading.show{display:block}
 </style>
 </head>
 <body>
@@ -792,23 +807,17 @@ function checkPass() {
       </div>
     </div>
 
-    <!-- صورة اليوم الرومانسية -->
+    <!-- همسة يومنا -->
     <div class="divider"></div>
     <div class="sec" id="s18">
-      <div class="sec-head"><span class="sec-ic">🎨</span><span class="sec-tit">صورة يومنا</span><div class="sec-ln"></div></div>
-      <div class="ai-photo-box">
-        <div class="ai-photo-title">لحظتنا الرومانسية 💕</div>
-        <div class="ai-photo-sub">ضغطي وتطلع صورة رومانسية جديدة ✨</div>
-        <button class="ai-gen-btn" id="aiGenBtn" onclick="generateAiPhoto()">💕 صورة يومنا</button>
-        <div class="ai-loading" id="aiLoading">
-          <div>🎨 جاري تحضير صورتكما... لحظة واحدة ✨</div>
-          <div class="ai-loading-bar"></div>
-        </div>
-        <div class="ai-result-frame" id="aiResultFrame">
-          <img id="aiResultImg" src="" alt="لحظتنا" crossorigin="anonymous">
-        </div>
-        <div class="ai-result-caption" id="aiResultCaption"></div>
-        <div id="aiSaveHint" style="display:none;font-size:0.72rem;color:#605080;text-align:center;margin-top:0.5rem">اضغطي مطولاً على الصورة لحفظها 📱</div>
+      <div class="sec-head"><span class="sec-ic">💌</span><span class="sec-tit">همسة يومنا</span><div class="sec-ln"></div></div>
+      <div class="whisper-box">
+        <div class="whisper-hearts" id="whisperHearts"></div>
+        <div class="whisper-icon">💌</div>
+        <div class="whisper-text" id="whisperText"></div>
+        <div class="whisper-date" id="whisperDate"></div>
+        <button class="whisper-btn" id="whisperBtn" onclick="getNewWhisper()">✨ همسة جديدة</button>
+        <div class="whisper-loading" id="whisperLoading">💭 جاري تحضير الهمسة...</div>
       </div>
     </div>
 
@@ -1863,6 +1872,128 @@ function requestNotifPermission() {
 }
 
 /* ===== INIT ===== */
+
+/* ===== همسة يومنا ===== */
+const DAILY_WHISPERS = [
+  "في كل صباح أفتح عيني، أول ما يخطر ببالي هو ابتسامتكِ... أنتِ الفكرة الأجمل في يومي 💕",
+  "لو كان الحب لغة، أنتِ الكلمة الوحيدة التي أعرفها... وأريد أن أكررها كل يوم 🌹",
+  "ما في شيء بالدنيا يساوي لحظة واحدة معكِ... لحظاتنا هي أغلى ما أملك ✨",
+  "أنتِ لستِ فقط من أحب، أنتِ السبب الذي يجعلني أؤمن بالجمال في هذا العالم 💜",
+  "كل نجمة في السماء تحكي قصة، لكن قصتنا أجمل من كل النجوم 🌌",
+  "قلبي بيت، وأنتِ الدفء الذي يجعله منزلاً... بدونكِ مجرد جدران 🏡",
+  "أحبكِ ليس لأنكِ كاملة، بل لأنكِ أنتِ... وهذا يكفي ويزيد 💕",
+  "في أصعب اللحظات، أفكر فيكِ فيرجع الأمل... أنتِ قوتي الخفية 💪",
+  "الوقت معكِ يمر كالحلم، والوقت بعيداً عنكِ يمر كالدهر... هذا هو الحب 🌙",
+  "أنتِ الفصل الأجمل في كتاب حياتي، وأتمنى أن يكون الفصل الأخير أيضاً 📖",
+  "لو أُعطيت كل كنوز الدنيا وقيل لي اختر، سأختارك أنتِ في كل مرة 💎",
+  "ابتسامتكِ تشفي ما لا تشفيه الأدوية... أنتِ دوائي الوحيد 🌸",
+  "أنتِ لستِ مجرد حبيبة، أنتِ وطن... وأنا مسافر يعود إليكِ دائماً 🏠",
+  "حين أكون بعيداً، أحمل معي ذكرى عطركِ وصوتكِ... وهذا يكفيني 🌺",
+  "أتمنى أن أكون السبب في ابتسامتكِ كل يوم... هذه أمنيتي الوحيدة 💫",
+];
+
+let whisperUsed = [];
+let whisperTyping = false;
+
+function getDailyWhisper() {
+  const day = new Date().getDate() + new Date().getMonth() * 31;
+  return DAILY_WHISPERS[day % DAILY_WHISPERS.length];
+}
+
+function typeWhisper(text, el, callback) {
+  el.textContent = '';
+  whisperTyping = true;
+  let i = 0;
+  const speed = 45;
+  function type() {
+    if (i < text.length) {
+      el.textContent += text[i];
+      i++;
+      setTimeout(type, speed);
+    } else {
+      whisperTyping = false;
+      if (callback) callback();
+    }
+  }
+  type();
+}
+
+function spawnWhisperHearts() {
+  const container = document.getElementById('whisperHearts');
+  if (!container) return;
+  container.innerHTML = '';
+  const emojis = ['💕','💗','💖','✨','🌹','💜','💫','🌸'];
+  for (let i = 0; i < 8; i++) {
+    const h = document.createElement('span');
+    h.className = 'whisper-heart';
+    h.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+    h.style.left = Math.random() * 90 + '%';
+    h.style.animationDuration = (3 + Math.random() * 4) + 's';
+    h.style.animationDelay = (Math.random() * 3) + 's';
+    h.style.fontSize = (0.8 + Math.random() * 0.8) + 'rem';
+    container.appendChild(h);
+  }
+}
+
+async function getNewWhisper() {
+  if (whisperTyping) return;
+  const btn = document.getElementById('whisperBtn');
+  const textEl = document.getElementById('whisperText');
+  const loading = document.getElementById('whisperLoading');
+  if (!btn || !textEl) return;
+  
+  btn.disabled = true;
+  loading.classList.add('show');
+  textEl.textContent = '';
+  spawnWhisperHearts();
+
+  let whisperText = '';
+  try {
+    const res = await fetch('/api/ai', {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({
+        prompt: 'اكتب همسة رومانسية قصيرة جداً من مصطفى لحلوم، جملتين فقط، بدون مقدمات، مؤثرة وعاطفية وشاعرية',
+        maxTokens: 120,
+        type: 'text'
+      })
+    });
+    const data = await res.json();
+    if (data.text && data.text.length > 10) whisperText = data.text;
+  } catch(e) {}
+
+  if (!whisperText) {
+    const available = DAILY_WHISPERS.filter((_, i) => !whisperUsed.includes(i));
+    if (available.length === 0) whisperUsed = [];
+    let idx;
+    do { idx = Math.floor(Math.random() * DAILY_WHISPERS.length); } while(whisperUsed.includes(idx) && whisperUsed.length < DAILY_WHISPERS.length);
+    whisperUsed.push(idx);
+    whisperText = DAILY_WHISPERS[idx];
+  }
+
+  loading.classList.remove('show');
+  typeWhisper(whisperText, textEl, () => {
+    btn.disabled = false;
+    if (typeof burst === 'function') burst(btn);
+  });
+}
+
+function initWhisper() {
+  const textEl = document.getElementById('whisperText');
+  const dateEl = document.getElementById('whisperDate');
+  if (!textEl) return;
+  
+  spawnWhisperHearts();
+  
+  const now = new Date();
+  const days = ['الأحد','الاثنين','الثلاثاء','الأربعاء','الخميس','الجمعة','السبت'];
+  const months = ['يناير','فبراير','مارس','أبريل','مايو','يونيو','يوليو','أغسطس','سبتمبر','أكتوبر','نوفمبر','ديسمبر'];
+  if (dateEl) dateEl.textContent = days[now.getDay()] + ' ' + now.getDate() + ' ' + months[now.getMonth()];
+  
+  const daily = getDailyWhisper();
+  setTimeout(() => typeWhisper(daily, textEl, null), 800);
+}
+
 function init() {
   updateCounter();
   buildTimeMsg();
